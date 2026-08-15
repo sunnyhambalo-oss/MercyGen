@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate | MercyGen Church</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="donate">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="MercyGen Church home">
+          <span class="brand-mark"><img src="Images/WhatsApp Image 2026-08-13 at 09.17.59.jpeg" alt="MercyGen logo"></span>
+          <span>MercyGen Church</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="college.html">College</a>
+          <a href="high-school.html">High School</a>
+          <a href="devotional.html">Devotional</a>
+          <a href="tribes.html">Tribes</a>
+          <a href="donate.html" class="active">Donate</a>
+        </nav>
+
+        <a href="donate.html" class="button button-primary small">Give</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container narrow-hero">
+          <p class="eyebrow">Support the mission</p>
+          <h1>Give with purpose.</h1>
+          <p class="lead">Every contribution helps us serve, disciple, and reach people with the love of Christ.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container donate-layout">
+          <div class="card donation-card">
+            <h3>Choose an amount</h3>
+            <div class="amount-grid">
+              <button class="amount-btn" data-amount="100">$100</button>
+              <button class="amount-btn" data-amount="250">$250</button>
+              <button class="amount-btn" data-amount="500">$500</button>
+              <button class="amount-btn" data-amount="1000">$1,000</button>
+            </div>
+
+            <label class="custom-amount">
+              <span>Custom amount</span>
+              <input type="number" id="custom-amount" min="5" placeholder="50" />
+            </label>
+
+            <label>
+              <span>Purpose</span>
+              <select id="donation-purpose">
+                <option>General mission</option>
+                <option>College discipleship</option>
+                <option>High school outreach</option>
+                <option>Community care</option>
+                <option>Prayer and worship</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="card donation-form-card">
+            <h3>Secure donation</h3>
+            <form>
+              <label>
+                Full name
+                <input type="text" placeholder="Your name" required />
+              </label>
+              <label>
+                Email
+                <input type="email" placeholder="you@example.com" required />
+              </label>
+              <label>
+                Card number
+                <input type="text" placeholder="•••• •••• •••• ••••" required />
+              </label>
+              <div class="split-fields">
+                <label>
+                  Expiry
+                  <input type="text" placeholder="MM/YY" required />
+                </label>
+                <label>
+                  CVC
+                  <input type="text" placeholder="123" required />
+                </label>
+              </div>
+              <button type="submit" class="button button-primary full-width">Donate securely</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <a href="index.html" class="brand footer-brand">
+            <span class="brand-mark"><img src="Images/WhatsApp Image 2026-08-13 at 09.17.59.jpeg" alt="MercyGen logo"></span>
+            <span>MercyGen Church</span>
+          </a>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="tribes.html">Tribes</a>
+          <a href="devotional.html">Devotional</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

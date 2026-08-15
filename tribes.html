@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MercyGen Tribes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="tribes">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="MercyGen Church home">
+          <span class="brand-mark"><img src="Images/WhatsApp Image 2026-08-13 at 09.17.59.jpeg" alt="MercyGen logo"></span>
+          <span>MercyGen Church</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="college.html">College</a>
+          <a href="high-school.html">High School</a>
+          <a href="devotional.html">Devotional</a>
+          <a href="tribes.html" class="active">Tribes</a>
+          <a href="donate.html">Donate</a>
+        </nav>
+
+        <a href="donate.html" class="button button-primary small">Give</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container narrow-hero">
+          <p class="eyebrow">Belong to a family</p>
+          <h1>Find your tribe.</h1>
+          <p class="lead">Each tribe is a Christ-centered community where people grow in love, prayer, and purpose.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Community pages</p>
+              <h2>Tribe directory</h2>
+            </div>
+          </div>
+          <div id="tribe-directory" class="tribe-grid"></div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="container">
+          <div class="card" style="padding: 24px;">
+            <div class="section-head" style="margin-bottom: 18px;">
+              <div>
+                <p class="eyebrow">Admin tools</p>
+                <h3>Post to a tribe</h3>
+              </div>
+            </div>
+            <form id="tribe-post-form" class="devotion-form-card" style="padding: 0;">
+              <label>
+                Tribe
+                <select id="post-tribe" name="tribe">
+                  <option>Serve Tribe</option>
+                  <option>Pray Tribe</option>
+                  <option>Youth Tribe</option>
+                </select>
+              </label>
+              <label>
+                Image URL
+                <input type="url" name="image" placeholder="https://example.com/image.jpg" required />
+              </label>
+              <label>
+                Caption
+                <textarea name="caption" rows="3" placeholder="Share a prayer, moment, or update..." required></textarea>
+              </label>
+              <button type="submit" class="button button-primary">Publish post</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <a href="index.html" class="brand footer-brand">
+            <span class="brand-mark"><img src="Images/WhatsApp Image 2026-08-13 at 09.17.59.jpeg" alt="MercyGen logo"></span>
+            <span>MercyGen Church</span>
+          </a>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="college.html">College</a>
+          <a href="devotional.html">Devotional</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MercyGen Devotional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body data-page="devotional">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="MercyGen Church home">
+          <span class="brand-mark"><img src="Images/WhatsApp Image 2026-08-13 at 09.17.59.jpeg" alt="MercyGen logo"></span>
+          <span>MercyGen Church</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="college.html">College</a>
+          <a href="high-school.html">High School</a>
+          <a href="devotional.html" class="active">Devotional</a>
+          <a href="tribes.html">Tribes</a>
+          <a href="donate.html">Donate</a>
+        </nav>
+
+        <a href="donate.html" class="button button-primary small">Give</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container narrow-hero">
+          <p class="eyebrow">Daily encouragement</p>
+          <h1>Verse of the day</h1>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container devotional-layout">
+          <div class="card verse-card">
+            <div class="verse-topbar">
+              <span class="tag">Today</span>
+              <label class="version-picker">
+                <span>Version</span>
+                <select id="verse-version">
+                  <option value="NIV">NIV</option>
+                  <option value="KJV">KJV</option>
+                  <option value="ESV">ESV</option>
+                </select>
+              </label>
+            </div>
+
+            <h2 id="verse-reference">Psalm 23:1</h2>
+            <p id="verse-text" class="verse-text">
+              The Lord is my shepherd; I lack nothing.
+            </p>
+            <p id="verse-note" class="verse-note">A reminder that Christ leads, provides, and keeps us.</p>
+          </div>
+
+          <div class="card devotion-form-card">
+            <h3>Share a devotion</h3>
+            <form id="devotion-form">
+              <label>
+                Name
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                Scripture
+                <input type="text" name="scripture" placeholder="e.g. Philippians 4:13" required />
+              </label>
+              <label>
+                Reflection
+                <textarea name="reflection" rows="4" placeholder="Share your insight..." required></textarea>
+              </label>
+              <button type="submit" class="button button-primary">Submit devotion</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">From the community</p>
+              <h2>Recent reflections</h2>
+            </div>
+          </div>
+          <div id="devotion-list" class="devotion-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <a href="index.html" class="brand footer-brand">
+            <span class="brand-mark"><img src="Images/WhatsApp Image 2026-08-13 at 09.17.59.jpeg" alt="MercyGen logo"></span>
+            <span>MercyGen Church</span>
+          </a>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="tribes.html">Tribes</a>
+          <a href="donate.html">Donate</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
