@@ -788,7 +788,8 @@ label {
   .all-grid,
   .feature-grid,
   .devotional-layout,
-  .donate-layout {
+  .donate-layout,
+  .cellgroup-layout {
     grid-template-columns: 1fr;
   }
 
@@ -798,6 +799,29 @@ label {
   .verse-topbar {
     display: grid;
     align-items: start;
+  }
+
+  .info-row {
+    gap: 8px;
+    padding: 16px 18px;
+  }
+
+  .cellgroup-page .page-hero {
+    padding-top: 56px;
+    padding-bottom: 18px;
+  }
+
+  .cellgroup-page .cellgroup-layout {
+    gap: 18px;
+  }
+
+  .cellgroup-page .card,
+  .cellgroup-page .info-row {
+    border-radius: 18px;
+  }
+
+  .cellgroup-page .cellgroup-form-card {
+    padding: 18px;
   }
 
   .main-card img {
