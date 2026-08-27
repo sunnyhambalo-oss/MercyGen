@@ -8,7 +8,7 @@
   --accent: #0a84ff;
   --accent-soft: rgba(10, 132, 255, 0.1);
   --line: rgba(0, 0, 0, 0.08);
-  --shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+  --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
 }
 
 * {
@@ -22,7 +22,7 @@ html {
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: linear-gradient(180deg, #f5f5f7 0%, #ffffff 280px);
+  background: #f5f5f7;
   color: var(--text);
   line-height: 1.6;
 }
@@ -53,8 +53,8 @@ textarea {
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 10;
-  backdrop-filter: blur(18px);
+  z-index: 25;
+  backdrop-filter: blur(20px);
   background: rgba(245, 245, 247, 0.72);
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
@@ -109,7 +109,6 @@ textarea {
   color: var(--text);
 }
 
-
 .button {
   display: inline-flex;
   align-items: center;
@@ -129,12 +128,12 @@ textarea {
 .button-primary {
   background: linear-gradient(135deg, #0a84ff, #0d6efc);
   color: white;
-  box-shadow: 0 12px 30px rgba(10, 132, 255, 0.3);
+  box-shadow: 0 12px 30px rgba(10, 132, 255, 0.24);
 }
 
 .button-secondary {
   border-color: rgba(0, 0, 0, 0.08);
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .button.small {
@@ -143,7 +142,7 @@ textarea {
 }
 
 .hero {
-  padding: 72px 0 32px;
+  padding: 64px 0 32px;
 }
 
 .hero-inner {
@@ -151,6 +150,29 @@ textarea {
   grid-template-columns: 1.1fr 0.9fr;
   gap: 54px;
   align-items: center;
+}
+
+.centered-hero {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  min-height: 520px;
+}
+
+.hero-copy-centered {
+  max-width: 900px;
+}
+
+.hero-copy-centered h1 {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-copy-centered .lead {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .eyebrow {
@@ -170,15 +192,16 @@ p {
 }
 
 h1 {
-  font-size: clamp(2.6rem, 5vw, 5rem);
-  line-height: 0.98;
-  letter-spacing: -0.06em;
+  font-size: clamp(3.2rem, 6vw, 6rem);
+  line-height: 0.94;
+  letter-spacing: -0.07em;
   max-width: 620px;
+  margin-bottom: 18px;
 }
 
 h2 {
-  font-size: clamp(1.9rem, 3vw, 3rem);
-  line-height: 1.1;
+  font-size: clamp(2.3rem, 3.6vw, 4rem);
+  line-height: 1.08;
   letter-spacing: -0.06em;
 }
 
@@ -199,6 +222,10 @@ h3 {
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 30px;
+}
+
+.center-row {
+  justify-content: center;
 }
 
 .hero-stats {
@@ -261,11 +288,15 @@ h3 {
 }
 
 .section {
-  padding: 48px 0 20px;
+  padding: 64px 0 28px;
+}
+
+.apple-section {
+  text-align: center;
 }
 
 .alt {
-  background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(245,245,247,0.7));
+  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(245,245,247,0.7));
 }
 
 .section-head {
@@ -274,6 +305,26 @@ h3 {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 26px;
+}
+
+.centered-head {
+  justify-content: center;
+  text-align: center;
+}
+
+.narrow-copy {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centered-copy {
+  text-align: center;
+}
+
+.centered-copy p {
+  color: var(--muted);
+  font-size: 1.06rem;
 }
 
 .text-link {
@@ -288,6 +339,14 @@ h3 {
 .all-grid {
   display: grid;
   gap: 22px;
+}
+
+.video-grid,
+.tribe-grid,
+.updates-grid,
+.centered-grid {
+  max-width: 1180px;
+  margin: 0 auto;
 }
 
 .video-grid {
@@ -390,6 +449,7 @@ h3 {
   display: flex;
   gap: 16px;
   padding: 18px;
+  text-align: left;
 }
 
 .mini-date {
@@ -443,6 +503,12 @@ h3 {
 .meetup-list {
   display: grid;
   gap: 16px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.centered-list {
+  text-align: left;
 }
 
 .meetup-item {
@@ -458,6 +524,18 @@ h3 {
 .meetup-item p {
   color: var(--muted);
   margin-bottom: 0;
+}
+
+.contact-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .site-footer {
@@ -528,6 +606,35 @@ h3 {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 24px;
+}
+
+.cellgroup-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.cellgroup-hero,
+.cellgroup-hero .narrow-hero,
+.cellgroup-hero .lead,
+.cellgroup-hero h1 {
+  text-align: center;
+}
+
+.cellgroup-hero .narrow-hero {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.cellgroup-card .list-stack,
+.cellgroup-list-stack {
+  max-width: 620px;
+  margin: 18px auto 0;
+}
+
+.cellgroup-form-card label {
+  text-align: left;
 }
 
 .verse-topbar {
