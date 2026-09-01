@@ -142,7 +142,7 @@ textarea {
 }
 
 .hero {
-  padding: 64px 0 32px;
+  padding: 16px 0 32px;
 }
 
 .hero-inner {
@@ -166,16 +166,17 @@ textarea {
 .hero-church-identity {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
   color: var(--text);
   font-size: 1.2rem;
   font-weight: 700;
 }
 
 .hero-church-identity img {
-  width: 48px;
-  height: 48px;
+  width: 88px;
+  height: 88px;
   border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
