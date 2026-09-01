@@ -1,4 +1,138 @@
-const tribeData = [
+// ==================== API Loading ====================
+const API_BASE = window.location.origin;
+let appContent = {};
+
+// Load content from API on page load
+async function loadAppContent() {
+  try {
+    const response = await fetch(`${API_BASE}/api/content`);
+    if (!response.ok) throw new Error('Failed to load content');
+    appContent = await response.json();
+    
+    // Update global data from API
+    tribeData = (appContent.tribes || tribeData).map(tribe => ({
+      ...tribe,
+      posts: Array.isArray(tribe.posts) ? tribe.posts : []
+    }));
+    devotionEntries = appContent.devotions || devotionEntries;
+    
+    // Create allContent from clips and updates
+    allContent = [];
+    if (appContent.clips) {
+      allContent.push(...appContent.clips.map(clip => ({
+        type: 'Clip',
+        image: clip.image,
+        label: clip.title
+      })));
+    }
+    if (appContent.updates) {
+      allContent.push(...appContent.updates.map(update => ({
+        type: 'Update',
+        image: appContent.tribes[0]?.image || 'Images/WhatsApp Image 2026-08-13 at 08.56.15.jpeg',
+        label: update.title
+      })));
+    }
+    
+    renderHomeContent();
+    renderHomeTribes();
+    renderAllContent();
+    renderTribeDirectory();
+    renderDevotions();
+    console.log('Content loaded from API');
+  } catch (err) {
+    console.error('Error loading from API:', err);
+  }
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+function renderHomeContent() {
+  if (document.body.dataset.page !== 'home') return;
+
+  const hero = appContent.hero;
+  if (hero) {
+    document.getElementById('hero-eyebrow').textContent = hero.eyebrow || '';
+    document.getElementById('hero-title').innerHTML = hero.title || '';
+    document.getElementById('hero-subtitle').textContent = hero.subtitle || '';
+    document.getElementById('hero-cta').innerHTML = (hero.cta || []).map(cta => {
+      const type = cta.type === 'secondary' ? 'secondary' : 'primary';
+      return `<a href="${escapeHtml(cta.link)}" class="button button-${type}">${escapeHtml(cta.text)}</a>`;
+    }).join('');
+  }
+
+  const mission = appContent.mission;
+  if (mission) {
+    document.getElementById('mission-eyebrow').textContent = mission.eyebrow || '';
+    document.getElementById('mission-title').textContent = mission.title || '';
+    document.getElementById('mission-description').textContent = mission.description || '';
+  }
+
+  if (Array.isArray(appContent.categories)) {
+    document.getElementById('category-grid').innerHTML = appContent.categories.map(category => `
+      <a href="${escapeHtml(category.link)}" class="category-card">
+        <div class="category-image">
+          <img src="${escapeHtml(category.image)}" alt="${escapeHtml(category.name)} ministry">
+        </div>
+        <div class="category-label">${escapeHtml(category.name)}</div>
+      </a>
+    `).join('');
+  }
+
+  if (Array.isArray(appContent.clips)) {
+    document.getElementById('clips-grid').innerHTML = appContent.clips.map(clip => `
+      <article class="card media-card">
+        <div class="media-shell">
+          <video controls poster="${escapeHtml(clip.image)}">
+            <source src="${escapeHtml(clip.video)}" type="video/mp4">
+          </video>
+        </div>
+        <div class="card-body">
+          <span class="tag">${escapeHtml(clip.tag)}</span>
+          <h3>${escapeHtml(clip.title)}</h3>
+          <p>${escapeHtml(clip.description)}</p>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  if (Array.isArray(appContent.updates)) {
+    document.getElementById('updates-grid').innerHTML = appContent.updates.map(update => `
+      <article class="card update-card">
+        <div class="mini-date"><span>${escapeHtml(update.date)}</span><small>${escapeHtml(update.month)}</small></div>
+        <div>
+          <span class="tag">${escapeHtml(update.tag)}</span>
+          <h3>${escapeHtml(update.title)}</h3>
+          <p>${escapeHtml(update.description)}</p>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  if (Array.isArray(appContent.serviceLocations)) {
+    document.getElementById('service-locations-list').innerHTML = appContent.serviceLocations.map(location => `
+      <div class="meetup-item">
+        <div>
+          <h3>${escapeHtml(location.title)}</h3>
+          <p>${escapeHtml(location.time)}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+}
+
+// Load content immediately
+loadAppContent();
+
+// ==================== Fallback Data ====================
+
+let tribeData = [
   {
     name: 'Pray Tribe',
     members: 124,
@@ -37,7 +171,7 @@ const tribeData = [
   }
 ];
 
-const allContent = [
+let allContent = [
   { type: 'Testimony', image: 'Images/WhatsApp Image 2026-08-13 at 08.56.13.jpeg', label: 'Healing' },
   { type: 'Update', image: 'Images/WhatsApp Image 2026-08-13 at 08.56.11.jpeg', label: 'Prayer night' },
   { type: 'Tribe', image: 'Images/WhatsApp Image 2026-08-13 at 08.56.15.jpeg', label: 'Pray Tribe' },
@@ -48,7 +182,7 @@ const allContent = [
   { type: 'Devotional', image: 'Images/WhatsApp Image 2026-08-13 at 08.56.17.jpeg', label: 'Reflection' }
 ];
 
-const devotionEntries = [
+let devotionEntries = [
   { name: 'Sarah', scripture: 'Philippians 4:13', reflection: 'Christ strengthens me in every season, especially when I choose to trust Him over fear.' },
   { name: 'Daniel', scripture: 'Romans 15:13', reflection: 'God’s hope fills the heart and gives us courage to keep loving people well.' },
   { name: 'Grace', scripture: 'Psalm 46:10', reflection: 'In the noise of life, I am learning to be still and remember that God is with me.' }
@@ -90,7 +224,7 @@ function renderHomeTribes() {
 
   target.innerHTML = tribeData
     .map((tribe, index) => {
-      const latestPost = tribe.posts[0];
+      const latestPost = tribe.posts?.[0];
       const joined = isJoined(index);
       return `
         <article class="card tribe-card">
@@ -152,7 +286,7 @@ function renderTribeDirectory() {
         <p>${tribe.description}</p>
         
         <div class="tribe-posts" style="margin-top: 14px; display: grid; gap: 10px;">
-          ${tribe.posts.map(post => `
+          ${(tribe.posts || []).map(post => `
             <div class="card" style="padding: 10px; border-radius: 14px;">
               <img src="${post.image}" alt="${tribe.name} post" style="border-radius: 12px; height: 120px; object-fit: cover;" />
               <p style="margin-top: 8px; margin-bottom: 0; color: var(--muted);">${post.caption}</p>
@@ -286,6 +420,7 @@ function bindTribePostForm() {
     const tribe = tribeData.find((entry) => entry.name === tribeName);
     if (!tribe) return;
 
+    tribe.posts = tribe.posts || [];
     tribe.posts.unshift({ image, caption });
     tribe.image = image;
     renderHomeTribes();

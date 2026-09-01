@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | MercyGen Church</title>
+  <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+  <main class="login-container">
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="login-header">
+        <a class="login-brand" href="/" aria-label="MercyGen Church home">
+          <img src="/Images/WhatsApp%20Image%202026-08-13%20at%2009.17.59.jpeg" alt="MercyGen logo">
+        </a>
+        <h1 id="login-title">Welcome back</h1>
+        <p>Sign in to continue.</p>
+      </div>
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input class="form-input" type="password" id="password" name="password" required autocomplete="current-password" placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <div id="login-error" class="error-message" role="alert"></div>
+      </form>
+    </section>
+  </main>
+  <script src="/login.js"></script>
+</body>
+</html>

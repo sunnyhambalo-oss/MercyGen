@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MercyGen Content Editor</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <div id="admin-container" class="admin-container">
+    <header class="admin-header">
+      <div class="header-content">
+        <h1>MercyGen Admin Dashboard</h1>
+        <button id="logout-btn" class="btn btn-secondary">Logout</button>
+      </div>
+    </header>
+
+    <div class="admin-body">
+      <nav class="admin-nav">
+        <button class="nav-btn active" data-section="hero">Hero Section</button>
+        <button class="nav-btn" data-section="mission">Mission</button>
+        <button class="nav-btn" data-section="categories">Categories</button>
+        <button class="nav-btn" data-section="clips">Clips</button>
+        <button class="nav-btn" data-section="tribes">Tribes</button>
+        <button class="nav-btn" data-section="updates">Updates</button>
+        <button class="nav-btn" data-section="serviceLocations">Service Locations</button>
+      </nav>
+
+      <main class="admin-content">
+        <!-- Hero Section -->
+        <section id="hero" class="section-editor active">
+          <h2>Hero Section</h2>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="hero-eyebrow" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title (HTML allowed)</label>
+            <textarea id="hero-title" class="form-textarea" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Subtitle</label>
+            <input type="text" id="hero-subtitle" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Primary CTA Text</label>
+            <input type="text" id="hero-cta-1-text" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Primary CTA Link</label>
+            <input type="text" id="hero-cta-1-link" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Secondary CTA Text</label>
+            <input type="text" id="hero-cta-2-text" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Secondary CTA Link</label>
+            <input type="text" id="hero-cta-2-link" class="form-input">
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('hero')">Save Changes</button>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="mission" class="section-editor">
+          <h2>Mission Section</h2>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="mission-eyebrow" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <textarea id="mission-title" class="form-textarea" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="mission-description" class="form-textarea" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('mission')">Save Changes</button>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="section-editor">
+          <h2>Categories</h2>
+          <div id="categories-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('categories')">Add Category</button>
+        </section>
+
+        <!-- Clips Section -->
+        <section id="clips" class="section-editor">
+          <h2>Clips</h2>
+          <div id="clips-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('clips')">Add Clip</button>
+        </section>
+
+        <!-- Tribes Section -->
+        <section id="tribes" class="section-editor">
+          <h2>Tribes</h2>
+          <div id="tribes-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('tribes')">Add Tribe</button>
+        </section>
+
+        <!-- Updates Section -->
+        <section id="updates" class="section-editor">
+          <h2>Updates</h2>
+          <div id="updates-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('updates')">Add Update</button>
+        </section>
+
+        <!-- Service Locations Section -->
+        <section id="serviceLocations" class="section-editor">
+          <h2>Service Locations</h2>
+          <div id="serviceLocations-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('serviceLocations')">Add Location</button>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal for editing items -->
+  <div id="item-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Edit Item</h2>
+        <button class="modal-close" onclick="closeItemModal()">&times;</button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeItemModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveItem()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification -->
+  <div id="notification" class="notification"></div>
+
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

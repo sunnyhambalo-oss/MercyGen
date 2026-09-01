@@ -1,0 +1,175 @@
+{
+  "hero": {
+    "eyebrow": "Christ-centered community",
+    "title": "Love God.<br>Love people.<br>Change the world.",
+    "subtitle": "Anointed and appointed for action.",
+    "cta": [
+      {
+        "text": "Join a Tribe",
+        "link": "tribes.html",
+        "type": "primary"
+      },
+      {
+        "text": "Our Mission",
+        "link": "#mission",
+        "type": "secondary"
+      }
+    ]
+  },
+  "mission": {
+    "eyebrow": "Our mission",
+    "title": "To win the lost, To make disciples, To raise a new generation of leaders",
+    "description": "Our mission is to engage and mobilise every member in the mission of Jesus Christ."
+  },
+  "categories": [
+    {
+      "id": 1,
+      "name": "College",
+      "link": "college.html",
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.15.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "High School",
+      "link": "high-school.html",
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.14.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "Kids",
+      "link": "kids.html",
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.13.jpeg"
+    }
+  ],
+  "clips": [
+    {
+      "id": 1,
+      "tag": "Healing",
+      "title": "God restored my hope",
+      "description": "Through prayer, grace, and a community that prayed with me, my life was transformed.",
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.15.jpeg",
+      "video": "Videos/WhatsApp Video 2026-08-13 at 12.14.52.mp4"
+    },
+    {
+      "id": 2,
+      "tag": "Salvation",
+      "title": "From empty to full",
+      "description": "Jesus met me in a season of confusion and gave me a new purpose and peace.",
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.12.jpeg",
+      "video": "Videos/WhatsApp Video 2026-08-13 at 12.14.05.mp4"
+    },
+    {
+      "id": 3,
+      "tag": "Purpose",
+      "title": "Called to serve",
+      "description": "One small act of obedience became a mission to love the people around me.",
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.13.jpeg",
+      "video": "Videos/WhatsApp Video 2026-08-13 at 12.13.27.mp4"
+    }
+  ],
+  "tribes": [
+    {
+      "id": 1,
+      "name": "Pray Tribe",
+      "members": 124,
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.18.jpeg",
+      "description": "A prayer-focused tribe committed to worship, intercession, and spiritual renewal.",
+      "likes": 278,
+      "whatsapp": "https://chat.whatsapp.com/EadccVTLtdZHzsadZqgGjC"
+    },
+    {
+      "id": 2,
+      "name": "Serve Tribe",
+      "members": 98,
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.15.jpeg",
+      "description": "A mission-hearted community that lives out Christ's compassion in practical ways.",
+      "likes": 193,
+      "whatsapp": "https://chat.whatsapp.com/EXAMPLE_SERVE_TRIBE"
+    },
+    {
+      "id": 3,
+      "name": "Youth Tribe",
+      "members": 216,
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.12.jpeg",
+      "description": "A vibrant youth family where faith, friendships, and purpose are strengthened together.",
+      "likes": 432,
+      "whatsapp": "https://chat.whatsapp.com/EXAMPLE_YOUTH_TRIBE"
+    }
+  ],
+  "updates": [
+    {
+      "id": 1,
+      "date": "12",
+      "month": "Aug",
+      "tag": "Prayer night",
+      "title": "Night of worship and prayer",
+      "description": "Join us for a focused evening of worship, scripture, and prayer for revival."
+    },
+    {
+      "id": 2,
+      "date": "20",
+      "month": "Aug",
+      "tag": "Community outreach",
+      "title": "Serve the city",
+      "description": "We will distribute food, encouragement, and prayer materials across the community."
+    },
+    {
+      "id": 3,
+      "date": "26",
+      "month": "Aug",
+      "tag": "Youth summit",
+      "title": "Rise with purpose",
+      "description": "A high-energy gathering where young people hear the Word and move in bold faith."
+    },
+    {
+      "id": 4,
+      "date": 21,
+      "month": "oct",
+      "tag": "camp",
+      "title": "Youth camp",
+      "description": "Leading the youth to Christ"
+    }
+  ],
+  "serviceLocations": [
+    {
+      "id": 1,
+      "title": "CBU Cafeteria",
+      "time": "Tuesday, 18hrs"
+    },
+    {
+      "id": 2,
+      "title": "CBU Chapel",
+      "time": "Thursday, 19hrs"
+    },
+    {
+      "id": 3,
+      "title": "New Gen Service",
+      "time": "Lifesong Harmony School (Chipata Compound), Saturday, 08:30"
+    },
+    {
+      "id": 4,
+      "title": "Sunday Service",
+      "time": "Lifesong Harmony School, 08:30"
+    }
+  ],
+  "devotions": [
+    {
+      "id": 1,
+      "name": "Sarah",
+      "scripture": "Philippians 4:13",
+      "reflection": "Christ strengthens me in every season, especially when I choose to trust Him over fear."
+    },
+    {
+      "id": 2,
+      "name": "Daniel",
+      "scripture": "Romans 15:13",
+      "reflection": "God's hope fills the heart and gives us courage to keep loving people well."
+    },
+    {
+      "id": 3,
+      "name": "Grace",
+      "scripture": "Psalm 46:10",
+      "reflection": "In the noise of life, I am learning to be still and remember that God is with me."
+    }
+  ]
+}
