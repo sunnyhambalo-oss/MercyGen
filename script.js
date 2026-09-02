@@ -74,6 +74,17 @@ function renderHomeContent() {
     document.getElementById('mission-description').textContent = mission.description || '';
   }
 
+  const greatLove = appContent.greatLove;
+  if (greatLove) {
+    document.getElementById('great-love-eyebrow').textContent = greatLove.eyebrow || '';
+    document.getElementById('great-love-title').textContent = greatLove.title || '';
+    document.getElementById('great-love-description').textContent = greatLove.description || '';
+    const video = document.getElementById('great-love-video');
+    video.setAttribute('poster', greatLove.image || '');
+    video.innerHTML = `<source src="${escapeHtml(greatLove.video)}" type="${greatLove.video && greatLove.video.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}">`;
+    video.load();
+  }
+
   if (Array.isArray(appContent.categories)) {
     document.getElementById('category-grid').innerHTML = appContent.categories.map(category => `
       <a href="${escapeHtml(category.link)}" class="category-card">

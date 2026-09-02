@@ -61,7 +61,7 @@ function switchSection(sectionName) {
   // Load content for array sections
   if (['categories', 'clips', 'tribes', 'updates', 'serviceLocations'].includes(sectionName)) {
     renderItemsList(sectionName);
-  } else if (sectionName === 'hero' || sectionName === 'mission') {
+  } else if (sectionName === 'hero' || sectionName === 'mission' || sectionName === 'greatLove') {
     loadSectionForm(sectionName);
   }
 }
@@ -106,6 +106,12 @@ function loadSectionForm(sectionName) {
     document.getElementById('mission-eyebrow').value = section.eyebrow || '';
     document.getElementById('mission-title').value = section.title || '';
     document.getElementById('mission-description').value = section.description || '';
+  } else if (sectionName === 'greatLove') {
+    document.getElementById('great-love-eyebrow-input').value = section.eyebrow || '';
+    document.getElementById('great-love-title-input').value = section.title || '';
+    document.getElementById('great-love-description-input').value = section.description || '';
+    document.getElementById('great-love-video-input').value = section.video || '';
+    document.getElementById('great-love-image-input').value = section.image || '';
   }
 }
 
@@ -138,6 +144,14 @@ async function saveSection(sectionName) {
         eyebrow: document.getElementById('mission-eyebrow').value,
         title: document.getElementById('mission-title').value,
         description: document.getElementById('mission-description').value
+      };
+    } else if (sectionName === 'greatLove') {
+      data = {
+        eyebrow: document.getElementById('great-love-eyebrow-input').value,
+        title: document.getElementById('great-love-title-input').value,
+        description: document.getElementById('great-love-description-input').value,
+        video: document.getElementById('great-love-video-input').value,
+        image: document.getElementById('great-love-image-input').value
       };
     }
 

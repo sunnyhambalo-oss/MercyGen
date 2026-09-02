@@ -19,6 +19,7 @@
       <nav class="admin-nav">
         <button class="nav-btn active" data-section="hero">Hero Section</button>
         <button class="nav-btn" data-section="mission">Mission</button>
+        <button class="nav-btn" data-section="greatLove">Our Great Love</button>
         <button class="nav-btn" data-section="categories">Categories</button>
         <button class="nav-btn" data-section="clips">Clips</button>
         <button class="nav-btn" data-section="tribes">Tribes</button>
@@ -77,6 +78,32 @@
             <textarea id="mission-description" class="form-textarea" rows="3"></textarea>
           </div>
           <button class="btn btn-primary" onclick="saveSection('mission')">Save Changes</button>
+        </section>
+
+        <!-- Our Great Love Section -->
+        <section id="greatLove" class="section-editor">
+          <h2>Our Great Love Section</h2>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="great-love-eyebrow-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="great-love-title-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="great-love-description-input" class="form-textarea" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Video Path</label>
+            <input type="text" id="great-love-video-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Poster Image Path</label>
+            <input type="text" id="great-love-image-input" class="form-input">
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('greatLove')">Save Changes</button>
         </section>
 
         <!-- Categories Section -->
