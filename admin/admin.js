@@ -349,8 +349,12 @@ function openItemModal(sectionName, item) {
         <input type="text" class="form-input item-field" data-field="title" value="${item.title}">
       </div>
       <div class="form-group">
-        <label>Time</label>
+        <label>Day & Time</label>
         <input type="text" class="form-input item-field" data-field="time" value="${item.time}">
+      </div>
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" class="form-input item-field" data-field="location" value="${item.location || ''}">
       </div>
     `;
   }
@@ -430,7 +434,7 @@ function addItem(sectionName) {
   } else if (sectionName === 'updates') {
     newItem = { id: null, date: '', month: '', tag: '', title: '', description: '' };
   } else if (sectionName === 'serviceLocations') {
-    newItem = { id: null, title: '', time: '' };
+    newItem = { id: null, title: '', time: '', location: '' };
   }
 
   editingItem = newItem;

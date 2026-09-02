@@ -90,7 +90,7 @@ function renderHomeContent() {
       <article class="card media-card">
         <div class="media-shell">
           <video controls poster="${escapeHtml(clip.image)}">
-            <source src="${escapeHtml(clip.video)}" type="video/mp4">
+            <source src="${escapeHtml(clip.video)}" type="${clip.video.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}">
           </video>
         </div>
         <div class="card-body">
@@ -118,10 +118,9 @@ function renderHomeContent() {
   if (Array.isArray(appContent.serviceLocations)) {
     document.getElementById('service-locations-list').innerHTML = appContent.serviceLocations.map(location => `
       <div class="meetup-item">
-        <div>
-          <h3>${escapeHtml(location.title)}</h3>
-          <p>${escapeHtml(location.time)}</p>
-        </div>
+        <h3>${escapeHtml(location.title)}</h3>
+        <p class="meetup-time">${escapeHtml(location.time)}</p>
+        <p class="meetup-location">${escapeHtml(location.location || '')}</p>
       </div>
     `).join('');
   }

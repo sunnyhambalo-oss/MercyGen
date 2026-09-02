@@ -26,19 +26,19 @@
       "id": 1,
       "name": "College",
       "link": "college.html",
-      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.15.jpeg"
+      "image": "Images/Copilot_20260902_200749.png"
     },
     {
       "id": 2,
       "name": "High School",
       "link": "high-school.html",
-      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.14.jpeg"
+      "image": "Images/Copilot_20260902_200644.png"
     },
     {
       "id": 3,
       "name": "Kids",
       "link": "kids.html",
-      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.13.jpeg"
+      "image": "Images/Copilot_20260902_201032.png"
     }
   ],
   "clips": [
@@ -48,7 +48,7 @@
       "title": "God restored my hope",
       "description": "Through prayer, grace, and a community that prayed with me, my life was transformed.",
       "image": "Images/WhatsApp Image 2026-08-13 at 08.56.15.jpeg",
-      "video": "Videos/WhatsApp Video 2026-08-13 at 12.14.52.mp4"
+      "video": "Videos/50bc189f-510c-4c4d-8cbd-e3e9c89760b2.mp4"
     },
     {
       "id": 2,
@@ -56,7 +56,7 @@
       "title": "From empty to full",
       "description": "Jesus met me in a season of confusion and gave me a new purpose and peace.",
       "image": "Images/WhatsApp Image 2026-08-13 at 08.56.12.jpeg",
-      "video": "Videos/WhatsApp Video 2026-08-13 at 12.14.05.mp4"
+      "video": "Videos/Automatic.mov"
     },
     {
       "id": 3,
@@ -64,7 +64,31 @@
       "title": "Called to serve",
       "description": "One small act of obedience became a mission to love the people around me.",
       "image": "Images/WhatsApp Image 2026-08-13 at 08.56.13.jpeg",
-      "video": "Videos/WhatsApp Video 2026-08-13 at 12.13.27.mp4"
+      "video": "Videos/copy_5C2626AA-9B00-46D5-9597-5B32CF1BEA28.mov"
+    },
+    {
+      "id": 4,
+      "tag": "Community",
+      "title": "Family beyond blood",
+      "description": "This church became the family I never knew I needed.",
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.11.jpeg",
+      "video": "Videos/IMG_7767.mov"
+    },
+    {
+      "id": 5,
+      "tag": "Faith",
+      "title": "Stepping into the unknown",
+      "description": "Trusting God with the next chapter, even when the path isn't clear.",
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.10.jpeg",
+      "video": "Videos/50bc189f-510c-4c4d-8cbd-e3e9c89760b2.mov"
+    },
+    {
+      "id": 6,
+      "tag": "Worship",
+      "title": "Encountering His presence",
+      "description": "Worship became the place where I met God in a fresh, personal way.",
+      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.16.jpeg",
+      "video": "Videos/50bc189f-510c-4c4d-8cbd-e3e9c89760b2.mp4"
     }
   ],
   "tribes": [
@@ -120,36 +144,32 @@
       "tag": "Youth summit",
       "title": "Rise with purpose",
       "description": "A high-energy gathering where young people hear the Word and move in bold faith."
-    },
-    {
-      "id": 4,
-      "date": 21,
-      "month": "oct",
-      "tag": "camp",
-      "title": "Youth camp",
-      "description": "Leading the youth to Christ"
     }
   ],
   "serviceLocations": [
     {
       "id": 1,
-      "title": "CBU Cafeteria",
-      "time": "Tuesday, 18hrs"
+      "title": "University College Service",
+      "time": "Tuesday, 18:30hrs",
+      "location": "Lower Cafe"
     },
     {
       "id": 2,
-      "title": "CBU Chapel",
-      "time": "Thursday, 19hrs"
+      "title": "Chipata High School Service",
+      "time": "Saturday, 09:30hrs",
+      "location": "Lifesong Harmony School, Chipata Compound, Kitwe"
     },
     {
       "id": 3,
-      "title": "New Gen Service",
-      "time": "Lifesong Harmony School (Chipata Compound), Saturday, 08:30"
+      "title": "Garneton High School Service",
+      "time": "Saturday, 09hrs",
+      "location": "Lifesong Garneton School, Garneton, Kitwe "
     },
     {
       "id": 4,
-      "title": "Sunday Service",
-      "time": "Lifesong Harmony School, 08:30"
+      "title": "general Church Service",
+      "time": "Sunday, 09:30hrs",
+      "location": "Lifesong Harmony School, Chipata Compound, Kitwe"
     }
   ],
   "devotions": [
