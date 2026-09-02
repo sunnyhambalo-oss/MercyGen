@@ -5,10 +5,8 @@ let appContent = {};
 // Load content from API on page load
 async function loadAppContent() {
   try {
-    const response = await fetch(`${API_BASE}/api/content`);
-    if (!response.ok) throw new Error('Failed to load content');
-    appContent = await response.json();
-    
+    appContent = await fetchAppContent();
+
     // Update global data from API
     tribeData = (appContent.tribes || tribeData).map(tribe => ({
       ...tribe,
@@ -51,11 +49,27 @@ async function loadAppContent() {
     renderCellgroupExtras();
     renderPageSchedule('cellgroup', appContent.cellgroupSchedule);
     renderPageHero('donate', appContent.donateHero);
-    console.log('Content loaded from API');
+    console.log('Content loaded');
   } catch (err) {
-    console.error('Error loading from API:', err);
+    console.error('Error loading content:', err);
   }
 }
+
+// Try the live admin API first (local/hosted server); fall back to the static
+// JSON file for hosts with no backend, like GitHub Pages.
+async function fetchAppContent() {
+  try {
+    const apiResponse = await fetch(`${API_BASE}/api/content`);
+    if (apiResponse.ok) return await apiResponse.json();
+  } catch (err) {
+    // API unreachable (e.g. static hosting) - fall through to static file
+  }
+
+  const staticResponse = await fetch('data/content.json');
+  if (!staticResponse.ok) throw new Error('Failed to load content');
+  return await staticResponse.json();
+}
+
 
 function escapeHtml(value) {
   return String(value ?? '')
