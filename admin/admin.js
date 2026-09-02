@@ -59,9 +59,21 @@ function switchSection(sectionName) {
   document.getElementById(sectionName).classList.add('active');
 
   // Load content for array sections
-  if (['categories', 'clips', 'tribes', 'updates', 'serviceLocations'].includes(sectionName)) {
+  const arraySections = [
+    'categories', 'clips', 'tribes', 'updates', 'serviceLocations',
+    'collegeFeatures', 'collegeSchedule',
+    'highSchoolFeatures', 'highSchoolSchedule',
+    'kidsFeatures', 'kidsSchedule',
+    'cellgroupValues', 'cellgroupSchedule'
+  ];
+  const singleSections = [
+    'hero', 'mission', 'greatLove',
+    'collegeHero', 'highSchoolHero', 'kidsHero',
+    'cellgroupHero', 'cellgroupGather', 'donateHero'
+  ];
+  if (arraySections.includes(sectionName)) {
     renderItemsList(sectionName);
-  } else if (sectionName === 'hero' || sectionName === 'mission' || sectionName === 'greatLove') {
+  } else if (singleSections.includes(sectionName)) {
     loadSectionForm(sectionName);
   }
 }
@@ -112,6 +124,14 @@ function loadSectionForm(sectionName) {
     document.getElementById('great-love-description-input').value = section.description || '';
     document.getElementById('great-love-video-input').value = section.video || '';
     document.getElementById('great-love-image-input').value = section.image || '';
+  } else if (sectionName.endsWith('Hero')) {
+    document.getElementById(`${sectionName}-eyebrow-input`).value = section.eyebrow || '';
+    document.getElementById(`${sectionName}-title-input`).value = section.title || '';
+    document.getElementById(`${sectionName}-lead-input`).value = section.lead || '';
+  } else if (sectionName === 'cellgroupGather') {
+    document.getElementById('cellgroupGather-tag-input').value = section.tag || '';
+    document.getElementById('cellgroupGather-title-input').value = section.title || '';
+    document.getElementById('cellgroupGather-description-input').value = section.description || '';
   }
 }
 
@@ -152,6 +172,18 @@ async function saveSection(sectionName) {
         description: document.getElementById('great-love-description-input').value,
         video: document.getElementById('great-love-video-input').value,
         image: document.getElementById('great-love-image-input').value
+      };
+    } else if (sectionName.endsWith('Hero')) {
+      data = {
+        eyebrow: document.getElementById(`${sectionName}-eyebrow-input`).value,
+        title: document.getElementById(`${sectionName}-title-input`).value,
+        lead: document.getElementById(`${sectionName}-lead-input`).value
+      };
+    } else if (sectionName === 'cellgroupGather') {
+      data = {
+        tag: document.getElementById('cellgroupGather-tag-input').value,
+        title: document.getElementById('cellgroupGather-title-input').value,
+        description: document.getElementById('cellgroupGather-description-input').value
       };
     }
 
@@ -356,7 +388,7 @@ function openItemModal(sectionName, item) {
         <textarea class="form-textarea item-field" data-field="description" rows="3">${item.description}</textarea>
       </div>
     `;
-  } else if (sectionName === 'serviceLocations') {
+  } else if (sectionName === 'serviceLocations' || sectionName.endsWith('Schedule')) {
     formHTML = `
       <div class="form-group">
         <label>Location Title</label>
@@ -369,6 +401,21 @@ function openItemModal(sectionName, item) {
       <div class="form-group">
         <label>Location</label>
         <input type="text" class="form-input item-field" data-field="location" value="${item.location || ''}">
+      </div>
+    `;
+  } else if (sectionName.endsWith('Features') || sectionName === 'cellgroupValues') {
+    formHTML = `
+      <div class="form-group">
+        <label>Tag</label>
+        <input type="text" class="form-input item-field" data-field="tag" value="${item.tag || ''}">
+      </div>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-input item-field" data-field="title" value="${item.title}">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-textarea item-field" data-field="description" rows="3">${item.description}</textarea>
       </div>
     `;
   }
@@ -447,8 +494,10 @@ function addItem(sectionName) {
     newItem = { id: null, name: '', members: 0, description: '', likes: 0, whatsapp: '', image: '' };
   } else if (sectionName === 'updates') {
     newItem = { id: null, date: '', month: '', tag: '', title: '', description: '' };
-  } else if (sectionName === 'serviceLocations') {
+  } else if (sectionName === 'serviceLocations' || sectionName.endsWith('Schedule')) {
     newItem = { id: null, title: '', time: '', location: '' };
+  } else if (sectionName.endsWith('Features') || sectionName === 'cellgroupValues') {
+    newItem = { id: null, tag: '', title: '', description: '' };
   }
 
   editingItem = newItem;

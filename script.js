@@ -38,6 +38,19 @@ async function loadAppContent() {
     renderAllContent();
     renderTribeDirectory();
     renderDevotions();
+    renderPageHero('college', appContent.collegeHero);
+    renderPageFeatures('college', appContent.collegeFeatures);
+    renderPageSchedule('college', appContent.collegeSchedule);
+    renderPageHero('highschool', appContent.highSchoolHero);
+    renderPageFeatures('highschool', appContent.highSchoolFeatures);
+    renderPageSchedule('highschool', appContent.highSchoolSchedule);
+    renderPageHero('kids', appContent.kidsHero);
+    renderPageFeatures('kids', appContent.kidsFeatures);
+    renderPageSchedule('kids', appContent.kidsSchedule);
+    renderPageHero('cellgroup', appContent.cellgroupHero);
+    renderCellgroupExtras();
+    renderPageSchedule('cellgroup', appContent.cellgroupSchedule);
+    renderPageHero('donate', appContent.donateHero);
     console.log('Content loaded from API');
   } catch (err) {
     console.error('Error loading from API:', err);
@@ -323,6 +336,59 @@ function renderDevotions() {
       `
     )
     .join('');
+}
+
+function renderPageHero(prefix, data) {
+  if (!data) return;
+  const eyebrowEl = document.getElementById(`${prefix}-hero-eyebrow`);
+  const titleEl = document.getElementById(`${prefix}-hero-title`);
+  const leadEl = document.getElementById(`${prefix}-hero-lead`);
+  if (eyebrowEl) eyebrowEl.textContent = data.eyebrow || '';
+  if (titleEl) titleEl.textContent = data.title || '';
+  if (leadEl) leadEl.textContent = data.lead || '';
+}
+
+function renderPageFeatures(prefix, items) {
+  const target = document.getElementById(`${prefix}-features-grid`);
+  if (!target || !Array.isArray(items)) return;
+  target.innerHTML = items.map(item => `
+    <article class="card feature-card">
+      <span class="tag">${escapeHtml(item.tag)}</span>
+      <h3>${escapeHtml(item.title)}</h3>
+      <p>${escapeHtml(item.description)}</p>
+    </article>
+  `).join('');
+}
+
+function renderPageSchedule(prefix, items) {
+  const target = document.getElementById(`${prefix}-schedule-list`);
+  if (!target || !Array.isArray(items)) return;
+  target.innerHTML = items.map(item => `
+    <div class="meetup-item">
+      <h3>${escapeHtml(item.title)}</h3>
+      <p class="meetup-time">${escapeHtml(item.time)}</p>
+      <p class="meetup-location">${escapeHtml(item.location || '')}</p>
+    </div>
+  `).join('');
+}
+
+function renderCellgroupExtras() {
+  const gather = appContent.cellgroupGather;
+  if (gather) {
+    const tagEl = document.getElementById('cellgroup-gather-tag');
+    const titleEl = document.getElementById('cellgroup-gather-title');
+    const descEl = document.getElementById('cellgroup-gather-description');
+    if (tagEl) tagEl.textContent = gather.tag || '';
+    if (titleEl) titleEl.textContent = gather.title || '';
+    if (descEl) descEl.textContent = gather.description || '';
+  }
+
+  const target = document.getElementById('cellgroup-values-list');
+  if (target && Array.isArray(appContent.cellgroupValues)) {
+    target.innerHTML = appContent.cellgroupValues.map(item => `
+      <div class="info-row"><strong>${escapeHtml(item.title)}</strong><span>${escapeHtml(item.description)}</span></div>
+    `).join('');
+  }
 }
 
 function updateVerse(version) {

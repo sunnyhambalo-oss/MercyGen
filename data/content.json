@@ -198,5 +198,74 @@
       "scripture": "Psalm 46:10",
       "reflection": "In the noise of life, I am learning to be still and remember that God is with me."
     }
-  ]
+  ],
+  "collegeHero": {
+    "eyebrow": "For university and college students",
+    "title": "Find purpose in Christ.",
+    "lead": "A community where faith, calling, and friendship grow together."
+  },
+  "collegeFeatures": [
+    { "id": 1, "tag": "Campus life", "title": "Prayer & fellowship", "description": "Gather for prayer, worship, and honest conversations about living for Christ on campus." },
+    { "id": 2, "tag": "Faith", "title": "Discipleship", "description": "Grow through Bible study, mentorship, and practical teaching that shapes character and mission." },
+    { "id": 3, "tag": "Action", "title": "Serve with impact", "description": "Use your gifts to bless others, reach your campus, and show Christ's love in real ways." }
+  ],
+  "collegeSchedule": [
+    { "id": 1, "title": "Tuesday Service", "time": "Tuesday, 19:00", "location": "CBU Lower Cafe" },
+    { "id": 2, "title": "Thursday Leadership Class", "time": "Thursday, 18:30", "location": "CBU Chapel" },
+    { "id": 3, "title": "Sunday Service", "time": "Sunday, 09:30", "location": "Life-Song Harmong School" }
+  ],
+  "highSchoolHero": {
+    "eyebrow": "For young people",
+    "title": "Stand strong in Christ.",
+    "lead": "A place to grow in faith, friendships, and the courage to live purposefully."
+  },
+  "highSchoolFeatures": [
+    { "id": 1, "tag": "Youth", "title": "Worship & prayer", "description": "Experience a space where worship leads to identity, healing, and renewed hope in Jesus." },
+    { "id": 2, "tag": "Mentorship", "title": "Leadership", "description": "Lead with integrity and learn how to carry your faith with confidence in everyday life." },
+    { "id": 3, "tag": "Community", "title": "Belonging", "description": "Be part of a supportive family where you can ask questions, build friendships, and grow." }
+  ],
+  "highSchoolSchedule": [
+    { "id": 1, "title": "Friday Youth Gathering", "time": "Friday, 17:30", "location": "Lifesong Harmony School" },
+    { "id": 2, "title": "Saturday Prayer", "time": "Saturday, 08:00", "location": "New Gen Service" },
+    { "id": 3, "title": "Sunday Worship", "time": "Sunday, 08:30", "location": "Lifesong Harmony School" }
+  ],
+  "kidsHero": {
+    "eyebrow": "MercyGen Kids",
+    "title": "Growing faith with joy.",
+    "lead": "A safe, welcoming place where children discover Jesus, make friends, and learn that they are deeply loved by God."
+  },
+  "kidsFeatures": [
+    { "id": 1, "tag": "Bible", "title": "Jesus at the center", "description": "Children explore God's Word through age-appropriate stories, worship, prayer, and creative activities." },
+    { "id": 2, "tag": "Belonging", "title": "A place to be known", "description": "Our caring team helps every child feel seen, included, and encouraged as they build friendships." },
+    { "id": 3, "tag": "Family", "title": "Growing together", "description": "We partner with parents and caregivers to help children live out their faith at home and every day." }
+  ],
+  "kidsSchedule": [
+    { "id": 1, "title": "Sunday Kids Church", "time": "Sunday, 08:30", "location": "Lifesong Harmony School" },
+    { "id": 2, "title": "New Gen Service", "time": "Saturday, 08:30", "location": "Lifesong Harmony School" }
+  ],
+  "cellgroupHero": {
+    "eyebrow": "Small group family",
+    "title": "Cell Group",
+    "lead": "A place to grow in faith, pray together, and live out Christ's love in community."
+  },
+  "cellgroupGather": {
+    "tag": "Purpose",
+    "title": "Why we gather",
+    "description": "Cell groups are built for genuine relationships, deeper discipleship, and life-changing prayer. We meet to worship, study scripture, share our stories, and pray for one another."
+  },
+  "cellgroupValues": [
+    { "id": 1, "tag": "", "title": "Prayer", "description": "Encouragement and spiritual covering" },
+    { "id": 2, "tag": "", "title": "Word", "description": "Scripture teaching and reflection" },
+    { "id": 3, "tag": "", "title": "Community", "description": "Mutual care, accountability, and belonging" }
+  ],
+  "cellgroupSchedule": [
+    { "id": 1, "title": "College Cell", "time": "Tuesday, 18:30", "location": "CBU Cafeteria" },
+    { "id": 2, "title": "Prayer & Discipleship", "time": "Thursday, 19:00", "location": "CBU Chapel" },
+    { "id": 3, "title": "Family Cell", "time": "Saturday, 09:00", "location": "Life Song Harmony School" }
+  ],
+  "donateHero": {
+    "eyebrow": "Support the mission",
+    "title": "Give with purpose.",
+    "lead": "Every contribution helps us serve, disciple, and reach people with the love of Christ."
+  }
 }

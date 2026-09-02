@@ -25,6 +25,20 @@
         <button class="nav-btn" data-section="tribes">Tribes</button>
         <button class="nav-btn" data-section="updates">Updates</button>
         <button class="nav-btn" data-section="serviceLocations">Service Locations</button>
+        <button class="nav-btn" data-section="collegeHero">College - Hero</button>
+        <button class="nav-btn" data-section="collegeFeatures">College - Features</button>
+        <button class="nav-btn" data-section="collegeSchedule">College - Schedule</button>
+        <button class="nav-btn" data-section="highSchoolHero">High School - Hero</button>
+        <button class="nav-btn" data-section="highSchoolFeatures">High School - Features</button>
+        <button class="nav-btn" data-section="highSchoolSchedule">High School - Schedule</button>
+        <button class="nav-btn" data-section="kidsHero">Kids - Hero</button>
+        <button class="nav-btn" data-section="kidsFeatures">Kids - Features</button>
+        <button class="nav-btn" data-section="kidsSchedule">Kids - Schedule</button>
+        <button class="nav-btn" data-section="cellgroupHero">Cell Group - Hero</button>
+        <button class="nav-btn" data-section="cellgroupGather">Cell Group - Why We Gather</button>
+        <button class="nav-btn" data-section="cellgroupValues">Cell Group - Values</button>
+        <button class="nav-btn" data-section="cellgroupSchedule">Cell Group - Schedule</button>
+        <button class="nav-btn" data-section="donateHero">Donate - Hero</button>
       </nav>
 
       <main class="admin-content">
@@ -139,6 +153,161 @@
           <h2>Service Locations</h2>
           <div id="serviceLocations-list" class="items-list"></div>
           <button class="btn btn-secondary" onclick="addItem('serviceLocations')">Add Location</button>
+        </section>
+
+        <!-- College Page -->
+        <section id="collegeHero" class="section-editor">
+          <h2>College - Hero</h2>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="collegeHero-eyebrow-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="collegeHero-title-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Lead</label>
+            <textarea id="collegeHero-lead-input" class="form-textarea" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('collegeHero')">Save Changes</button>
+        </section>
+
+        <section id="collegeFeatures" class="section-editor">
+          <h2>College - Features</h2>
+          <div id="collegeFeatures-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('collegeFeatures')">Add Feature</button>
+        </section>
+
+        <section id="collegeSchedule" class="section-editor">
+          <h2>College - Schedule</h2>
+          <div id="collegeSchedule-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('collegeSchedule')">Add Schedule Item</button>
+        </section>
+
+        <!-- High School Page -->
+        <section id="highSchoolHero" class="section-editor">
+          <h2>High School - Hero</h2>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="highSchoolHero-eyebrow-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="highSchoolHero-title-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Lead</label>
+            <textarea id="highSchoolHero-lead-input" class="form-textarea" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('highSchoolHero')">Save Changes</button>
+        </section>
+
+        <section id="highSchoolFeatures" class="section-editor">
+          <h2>High School - Features</h2>
+          <div id="highSchoolFeatures-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('highSchoolFeatures')">Add Feature</button>
+        </section>
+
+        <section id="highSchoolSchedule" class="section-editor">
+          <h2>High School - Schedule</h2>
+          <div id="highSchoolSchedule-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('highSchoolSchedule')">Add Schedule Item</button>
+        </section>
+
+        <!-- Kids Page -->
+        <section id="kidsHero" class="section-editor">
+          <h2>Kids - Hero</h2>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="kidsHero-eyebrow-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="kidsHero-title-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Lead</label>
+            <textarea id="kidsHero-lead-input" class="form-textarea" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('kidsHero')">Save Changes</button>
+        </section>
+
+        <section id="kidsFeatures" class="section-editor">
+          <h2>Kids - Features</h2>
+          <div id="kidsFeatures-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('kidsFeatures')">Add Feature</button>
+        </section>
+
+        <section id="kidsSchedule" class="section-editor">
+          <h2>Kids - Schedule</h2>
+          <div id="kidsSchedule-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('kidsSchedule')">Add Schedule Item</button>
+        </section>
+
+        <!-- Cell Group Page -->
+        <section id="cellgroupHero" class="section-editor">
+          <h2>Cell Group - Hero</h2>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="cellgroupHero-eyebrow-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="cellgroupHero-title-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Lead</label>
+            <textarea id="cellgroupHero-lead-input" class="form-textarea" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('cellgroupHero')">Save Changes</button>
+        </section>
+
+        <section id="cellgroupGather" class="section-editor">
+          <h2>Cell Group - Why We Gather</h2>
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" id="cellgroupGather-tag-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="cellgroupGather-title-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="cellgroupGather-description-input" class="form-textarea" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('cellgroupGather')">Save Changes</button>
+        </section>
+
+        <section id="cellgroupValues" class="section-editor">
+          <h2>Cell Group - Values</h2>
+          <div id="cellgroupValues-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('cellgroupValues')">Add Value</button>
+        </section>
+
+        <section id="cellgroupSchedule" class="section-editor">
+          <h2>Cell Group - Schedule</h2>
+          <div id="cellgroupSchedule-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('cellgroupSchedule')">Add Schedule Item</button>
+        </section>
+
+        <!-- Donate Page -->
+        <section id="donateHero" class="section-editor">
+          <h2>Donate - Hero</h2>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="donateHero-eyebrow-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="donateHero-title-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Lead</label>
+            <textarea id="donateHero-lead-input" class="form-textarea" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('donateHero')">Save Changes</button>
         </section>
       </main>
     </div>
