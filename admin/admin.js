@@ -60,7 +60,7 @@ function switchSection(sectionName) {
 
   // Load content for array sections
   const arraySections = [
-    'categories', 'clips', 'tribes', 'updates', 'serviceLocations',
+    'categories', 'clips', 'updates', 'serviceLocations',
     'collegeFeatures', 'collegeSchedule',
     'highSchoolFeatures', 'highSchoolSchedule',
     'kidsFeatures', 'kidsSchedule',
@@ -331,40 +331,6 @@ function openItemModal(sectionName, item) {
         </div>
       </div>
     `;
-  } else if (sectionName === 'tribes') {
-    formHTML = `
-      <div class="form-group">
-        <label>Tribe Name</label>
-        <input type="text" class="form-input item-field" data-field="name" value="${item.name}">
-      </div>
-      <div class="form-group">
-        <label>Members</label>
-        <input type="number" class="form-input item-field" data-field="members" value="${item.members}">
-      </div>
-      <div class="form-group">
-        <label>Description</label>
-        <textarea class="form-textarea item-field" data-field="description" rows="3">${item.description}</textarea>
-      </div>
-      <div class="form-group">
-        <label>Likes</label>
-        <input type="number" class="form-input item-field" data-field="likes" value="${item.likes}">
-      </div>
-      <div class="form-group">
-        <label>WhatsApp Link</label>
-        <input type="text" class="form-input item-field" data-field="whatsapp" value="${item.whatsapp}">
-      </div>
-      <div class="form-group">
-        <label>Image Path</label>
-        <input type="text" class="form-input item-field" data-field="image" value="${item.image}">
-      </div>
-      <div class="form-group">
-        <label>Upload New Image</label>
-        <div class="file-input-group" onclick="document.getElementById('tribe-image-upload').click()">
-          <p>Click to upload or drag and drop</p>
-          <input type="file" id="tribe-image-upload" accept="image/*" onchange="uploadItemFile(event, 'image')">
-        </div>
-      </div>
-    `;
   } else if (sectionName === 'updates') {
     formHTML = `
       <div class="form-group">
@@ -490,8 +456,6 @@ function addItem(sectionName) {
     newItem = { id: null, name: '', link: '', image: '' };
   } else if (sectionName === 'clips') {
     newItem = { id: null, title: '', tag: '', description: '', image: '', video: '' };
-  } else if (sectionName === 'tribes') {
-    newItem = { id: null, name: '', members: 0, description: '', likes: 0, whatsapp: '', image: '' };
   } else if (sectionName === 'updates') {
     newItem = { id: null, date: '', month: '', tag: '', title: '', description: '' };
   } else if (sectionName === 'serviceLocations' || sectionName.endsWith('Schedule')) {

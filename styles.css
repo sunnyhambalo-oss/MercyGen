@@ -141,6 +141,12 @@ textarea {
   font-size: 0.92rem;
 }
 
+.hero-give-button {
+  min-width: 150px;
+  padding: 1rem 2.1rem;
+  font-size: 1.08rem;
+}
+
 .hero {
   padding: 16px 0 32px;
 }
@@ -374,7 +380,6 @@ h3 {
 }
 
 .video-grid,
-.tribe-grid,
 .updates-grid,
 .feature-grid,
 .all-grid {
@@ -383,7 +388,6 @@ h3 {
 }
 
 .video-grid,
-.tribe-grid,
 .updates-grid,
 .centered-grid {
   max-width: 1180px;
@@ -449,39 +453,6 @@ h3 {
 .card-body p {
   color: var(--muted);
   margin-bottom: 0;
-}
-
-.tribe-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.tribe-card {
-  padding: 18px;
-}
-
-.tribe-visual {
-  aspect-ratio: 1.3;
-  border-radius: 22px;
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.tribe-visual img {
-  height: 100%;
-  object-fit: cover;
-}
-
-.tribe-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.tribe-meta strong {
-  font-size: 1.05rem;
-  letter-spacing: -0.02em;
 }
 
 .count {
@@ -821,7 +792,6 @@ label {
   .devotional-layout,
   .donate-layout,
   .video-grid,
-  .tribe-grid,
   .updates-grid,
   .all-grid,
   .feature-grid {
@@ -848,7 +818,6 @@ label {
 
   .hero-inner,
   .video-grid,
-  .tribe-grid,
   .updates-grid,
   .all-grid,
   .feature-grid,

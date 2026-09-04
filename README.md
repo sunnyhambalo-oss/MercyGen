@@ -9,7 +9,6 @@ This project presents MercyGen Church as a welcoming digital home for:
 - youth and campus communities
 - daily spiritual encouragement
 - testimonies and updates
-- tribe-based community connection
 - donations and mission support
 
 The design emphasizes clarity, usability, elegance, and responsiveness across desktop and mobile screens.
@@ -27,7 +26,6 @@ These statements are woven into the design, content, and overall user experience
 ### Home page
 The home page includes:
 - testimony videos
-- tribe section with images and community highlights
 - updates section for events and announcements
 - an “All” content section that aggregates content in one easy-to-scan layout
 - prominent mission message and motto
@@ -58,14 +56,6 @@ The donation page includes:
 - secure-looking payment form layout
 - giving options for supporting church mission work
 
-### Tribes page
-The tribe page is designed as a community directory with:
-- independent tribe cards
-- join buttons with member counts
-- like buttons with live count updates
-- admin post submission controls
-- tribe images and captions displayed as community posts
-
 ## How the site works
 
 ### Front-end structure
@@ -77,8 +67,6 @@ The site is built with plain HTML, CSS, and JavaScript for simplicity and fast l
 
 ### Content model
 The website uses in-browser JavaScript data arrays to simulate real community content such as:
-- tribes
-- likes and member counts
 - devotion submissions
 - event updates
 - general site content
@@ -87,11 +75,8 @@ This gives the site a polished, modern feel while keeping the project lightweigh
 
 ### Interactivity implemented
 The JavaScript includes features such as:
-- tribe join buttons that increase counts
-- like buttons that update totals live
 - devotional version switching
 - new devotional submissions added to the list instantly
-- tribe post publishing from the admin form
 - donation amount selection and checkout mock flow
 
 ### Technical architecture
@@ -106,7 +91,7 @@ This makes the project straightforward to expand into a full CMS or backend-powe
 
 ### Planning for future backend integration
 The current version is front-end only and is suitable for a prototype or landing site. It can later be upgraded with:
-- a real database for tribe posts, testimonies, and updates
+- a real database for testimonies and updates
 - user authentication and role-based permissions
 - admin dashboards
 - a real donation payment processor
@@ -132,7 +117,6 @@ The current version is front-end only and is suitable for a prototype or landing
 - [high-school.html](high-school.html) — high school page
 - [devotional.html](devotional.html) — verse and devotion page
 - [donate.html](donate.html) — donation page
-- [tribes.html](tribes.html) — tribe directory/community page
 - [styles.css](styles.css) — all layout and visual styling
 - [script.js](script.js) — interactivity and dynamic page logic
 - [README.md](README.md) — project documentation
@@ -203,7 +187,7 @@ Purpose:
 Role:
 - controls updates, visual posts, and media content
 - manages church imagery, testimonies, and event promotion
-- publishes official media to the home page and tribe sections
+- publishes official media to the home page
 
 Purpose:
 - keeps the church’s digital presence active, beautiful, and aligned with the mission
@@ -212,7 +196,6 @@ Purpose:
 Role:
 - can submit testimonies
 - can submit devotions
-- can like tribe posts
 - can participate in community engagement
 
 Purpose:
@@ -246,7 +229,6 @@ Navigation, grids, and cards collapse into clean mobile-friendly layouts when th
 - high-school.html — high school page
 - devotional.html — verse and devotion page
 - donate.html — donation page
-- tribes.html — tribe directory/community page
 - styles.css — all layout and visual styling
 - script.js — interactivity and dynamic page logic
 

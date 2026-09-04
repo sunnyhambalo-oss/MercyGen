@@ -5,14 +5,9 @@
     "subtitle": "Anointed and appointed for action.",
     "cta": [
       {
-        "text": "Join a Tribe",
-        "link": "tribes.html",
+        "text": "Give",
+        "link": "donate.html",
         "type": "primary"
-      },
-      {
-        "text": "Our Mission",
-        "link": "#mission",
-        "type": "secondary"
       }
     ]
   },
@@ -48,7 +43,7 @@
       "title": "College Tent Revival",
       "description": "On July 11th, our College Ministry had a Tent Revival Outreach at CBU Campus - and we saw 1500 attenders, and 700 of them responded to the alter call. God is Good! ",
       "image": "Images/WhatsApp Image 2026-08-13 at 08.56.15.jpeg",
-      "video": "Videos/50bc189f-510c-4c4d-8cbd-e3e9c89760b2.mp4"
+      "video": "Videos/WhatsApp Video 2026-09-04 at 10.40.31.mp4"
     },
     {
       "id": 2,
@@ -56,7 +51,7 @@
       "title": "College / Youth Conference",
       "description": "On July 24th - 25th, We saw 1000 attenders at our first Annual Youth Conference. Pastor Zinhle and Thokozile from 3C Church Centurion, SA, were our special guests. It was Simply Amazing!",
       "image": "Images/WhatsApp Image 2026-08-13 at 08.56.12.jpeg",
-      "video": "Videos/Automatic.mov"
+      "video": "Videos/WhatsApp Video 2026-09-04 at 10.41.24.mp4"
     },
     {
       "id": 3,
@@ -64,7 +59,7 @@
       "title": "High School Outreach",
       "description": "Earlier this year our High School members did a Plan 40 outreach to all their Friends, Relatives, Neighbors & Classmates. We had 600 in attendance with several hundred who responded to the Alter Call. Incredible!",
       "image": "Images/WhatsApp Image 2026-08-13 at 08.56.13.jpeg",
-      "video": "Videos/copy_5C2626AA-9B00-46D5-9597-5B32CF1BEA28.mov"
+      "video": "Videos/WhatsApp Video 2026-09-04 at 10.51.40.mp4"
     },
     {
       "id": 4,
@@ -98,35 +93,6 @@
     "image": "Images/WhatsApp Image 2026-08-13 at 08.56.14.jpeg",
     "video": "Videos/Automatic.mov"
   },
-  "tribes": [
-    {
-      "id": 1,
-      "name": "Pray Tribe",
-      "members": 124,
-      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.18.jpeg",
-      "description": "A prayer-focused tribe committed to worship, intercession, and spiritual renewal.",
-      "likes": 278,
-      "whatsapp": "https://chat.whatsapp.com/EadccVTLtdZHzsadZqgGjC"
-    },
-    {
-      "id": 2,
-      "name": "Serve Tribe",
-      "members": 98,
-      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.15.jpeg",
-      "description": "A mission-hearted community that lives out Christ's compassion in practical ways.",
-      "likes": 193,
-      "whatsapp": "https://chat.whatsapp.com/EXAMPLE_SERVE_TRIBE"
-    },
-    {
-      "id": 3,
-      "name": "Youth Tribe",
-      "members": 216,
-      "image": "Images/WhatsApp Image 2026-08-13 at 08.56.12.jpeg",
-      "description": "A vibrant youth family where faith, friendships, and purpose are strengthened together.",
-      "likes": 432,
-      "whatsapp": "https://chat.whatsapp.com/EXAMPLE_YOUTH_TRIBE"
-    }
-  ],
   "updates": [
     {
       "id": 1,
