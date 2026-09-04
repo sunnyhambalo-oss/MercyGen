@@ -9,6 +9,7 @@ let editingSection = null;
 document.addEventListener('DOMContentLoaded', () => {
   loadContent();
   document.getElementById('logout-btn').addEventListener('click', handleLogout);
+  setupGreatLoveUploads();
 
   // Navigation
   document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -124,6 +125,8 @@ function loadSectionForm(sectionName) {
     document.getElementById('great-love-description-input').value = section.description || '';
     document.getElementById('great-love-video-input').value = section.video || '';
     document.getElementById('great-love-image-input').value = section.image || '';
+    updateGreatLovePreview('video', section.video || '');
+    updateGreatLovePreview('image', section.image || '');
   } else if (sectionName.endsWith('Hero')) {
     document.getElementById(`${sectionName}-eyebrow-input`).value = section.eyebrow || '';
     document.getElementById(`${sectionName}-title-input`).value = section.title || '';
@@ -132,6 +135,82 @@ function loadSectionForm(sectionName) {
     document.getElementById('cellgroupGather-tag-input').value = section.tag || '';
     document.getElementById('cellgroupGather-title-input').value = section.title || '';
     document.getElementById('cellgroupGather-description-input').value = section.description || '';
+  }
+}
+
+function setupGreatLoveUploads() {
+  ['image', 'video'].forEach(fieldType => {
+    const dropzone = document.getElementById(`great-love-${fieldType}-dropzone`);
+    const input = document.getElementById(`great-love-${fieldType}-upload`);
+    if (!dropzone || !input) return;
+
+    dropzone.addEventListener('click', () => input.click());
+    input.addEventListener('click', (event) => event.stopPropagation());
+    dropzone.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        input.click();
+      }
+    });
+    dropzone.addEventListener('dragover', (event) => {
+      event.preventDefault();
+      dropzone.classList.add('is-dragging');
+    });
+    dropzone.addEventListener('dragleave', () => {
+      dropzone.classList.remove('is-dragging');
+    });
+    dropzone.addEventListener('drop', (event) => {
+      event.preventDefault();
+      dropzone.classList.remove('is-dragging');
+      uploadGreatLoveFile(event.dataTransfer.files[0], fieldType);
+    });
+    input.addEventListener('change', () => {
+      uploadGreatLoveFile(input.files[0], fieldType);
+      input.value = '';
+    });
+  });
+}
+
+async function uploadGreatLoveFile(file, fieldType) {
+  if (!file) return;
+
+  const acceptedType = fieldType === 'video' ? file.type.startsWith('video/') : file.type.startsWith('image/');
+  if (!acceptedType) {
+    showNotification(`Please choose a valid ${fieldType} file`, 'error');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('image', file);
+
+  try {
+    const response = await fetch(`${API_BASE}/api/upload`, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (redirectIfUnauthorized(response)) return;
+    if (!response.ok) throw new Error('Upload failed');
+
+    const data = await response.json();
+    document.getElementById(`great-love-${fieldType}-input`).value = data.path;
+    updateGreatLovePreview(fieldType, data.path);
+    showNotification(`${fieldType === 'video' ? 'Video' : 'Image'} uploaded successfully!`, 'success');
+  } catch (err) {
+    showNotification(err.message, 'error');
+  }
+}
+
+function updateGreatLovePreview(fieldType, path) {
+  const preview = document.getElementById(`great-love-${fieldType}-preview`);
+  if (!preview) return;
+
+  if (path) {
+    preview.src = path;
+    preview.style.display = 'block';
+  } else {
+    preview.removeAttribute('src');
+    preview.style.display = 'none';
   }
 }
 

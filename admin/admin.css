@@ -424,6 +424,12 @@ body {
   background: var(--accent-soft);
 }
 
+.file-input-group.is-dragging {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: scale(1.01);
+}
+
 .file-input-group input[type="file"] {
   display: none;
 }
@@ -439,6 +445,15 @@ body {
   max-height: 200px;
   border-radius: 12px;
   display: block;
+}
+
+.media-preview {
+  margin-top: 12px;
+  width: 100%;
+  max-height: 240px;
+  border-radius: 12px;
+  background: #111;
+  object-fit: contain;
 }
 
 /* ============ Notifications ============ */

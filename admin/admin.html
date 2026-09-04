@@ -111,10 +111,20 @@
           <div class="form-group">
             <label>Video Path</label>
             <input type="text" id="great-love-video-input" class="form-input">
+            <div class="file-input-group media-dropzone" id="great-love-video-dropzone" role="button" tabindex="0">
+              <p>Click to upload or drag and drop a video</p>
+              <input type="file" id="great-love-video-upload" accept="video/*">
+            </div>
+            <video id="great-love-video-preview" class="media-preview" controls style="display:none;"></video>
           </div>
           <div class="form-group">
             <label>Poster Image Path</label>
             <input type="text" id="great-love-image-input" class="form-input">
+            <div class="file-input-group media-dropzone" id="great-love-image-dropzone" role="button" tabindex="0">
+              <p>Click to upload or drag and drop an image</p>
+              <input type="file" id="great-love-image-upload" accept="image/*">
+            </div>
+            <img id="great-love-image-preview" class="media-preview" alt="Great Love poster preview" style="display:none;">
           </div>
           <button class="btn btn-primary" onclick="saveSection('greatLove')">Save Changes</button>
         </section>
