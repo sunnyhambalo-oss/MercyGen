@@ -276,12 +276,6 @@
   ],
   "kidsSchedule": [
     {
-      "id": 1,
-      "title": "Kids Church",
-      "time": "Sundays, 08:30",
-      "location": "Lifesong Harmony School, Chipata Compound, Kitwe"
-    },
-    {
       "id": 2,
       "title": "Kids at New Gen Service",
       "time": "Saturday, 08:30",
@@ -327,15 +321,21 @@
   "cellgroupSchedule": [
     {
       "id": 1,
-      "title": "College Cells",
-      "time": "Tuesdays, 17:30",
-      "location": "CBU Campus Lower Cafe"
+      "title": "General Information",
+      "time": "Our college Cells often meet at different times & places",
+      "location": "But you can find quite a few that meet as follows"
     },
     {
       "id": 2,
       "title": "High School Cells",
       "time": "Saturdays, 11:30hrs",
       "location": "Lifesong Harmony School, Chipata Compound, Kitwe"
+    },
+    {
+      "id": 3,
+      "title": "College Cells",
+      "time": "Tuesdays, 17:30",
+      "location": "CBU Campus Lower Cafe"
     }
   ],
   "donateHero": {
