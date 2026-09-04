@@ -601,6 +601,13 @@ h3 {
   padding: 72px 0 30px;
 }
 
+body[data-page="college"] .page-hero h1,
+body[data-page="high-school"] .page-hero h1,
+body[data-page="kids"] .page-hero h1,
+.cellgroup-hero h1 {
+  word-spacing: 0.08em;
+}
+
 .narrow-hero {
   max-width: 760px;
 }
