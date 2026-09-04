@@ -237,61 +237,61 @@
   ],
   "highSchoolSchedule": [
     {
-      "id": 1,
-      "title": "Friday Youth Gathering",
-      "time": "Friday, 17:30",
-      "location": "Lifesong Harmony School"
-    },
-    {
       "id": 2,
-      "title": "Saturday Prayer",
-      "time": "Saturday, 08:00",
-      "location": "New Gen Service"
+      "title": "Saturday New Gen Services",
+      "time": "Saturdays, 08:30",
+      "location": "Lifesong Harmony School, Chipata Compound, Kitwe"
     },
     {
       "id": 3,
-      "title": "Sunday Worship",
-      "time": "Sunday, 08:30",
-      "location": "Lifesong Harmony School"
+      "title": "Family Sunday Service",
+      "time": "Sundays, 09hrs",
+      "location": "Lifesong Harmony School, Chipata Compound, Kitwe"
     }
   ],
   "kidsHero": {
     "eyebrow": "MercyGen Kids",
-    "title": "Growing faith with joy.",
+    "title": "Loving Our Kids with Joy.",
     "lead": "A safe, welcoming place where children discover Jesus, make friends, and learn that they are deeply loved by God."
   },
   "kidsFeatures": [
     {
       "id": 1,
-      "tag": "Bible",
+      "tag": "Worship & Dance",
       "title": "Jesus at the center",
-      "description": "Children explore God's Word through age-appropriate stories, worship, prayer, and creative activities."
+      "description": "Children explore God's Word through age-appropriate stories, worship, dance, prayer, and creative activities."
     },
     {
       "id": 2,
       "tag": "Belonging",
       "title": "A place to be known",
-      "description": "Our caring team helps every child feel seen, included, and encouraged as they build friendships."
+      "description": "Our caring team helps every child feel seen, included, and encouraged as they discover their relationship with Jesus"
     },
     {
       "id": 3,
       "tag": "Family",
       "title": "Growing together",
-      "description": "We partner with parents and caregivers to help children live out their faith at home and every day."
+      "description": "We seek to help the vulnerable Children who come to our church, to connect with their families and to help bring healing to their whole family. "
     }
   ],
   "kidsSchedule": [
     {
       "id": 1,
-      "title": "Sunday Kids Church",
-      "time": "Sunday, 08:30",
-      "location": "Lifesong Harmony School"
+      "title": "Kids Church",
+      "time": "Sundays, 08:30",
+      "location": "Lifesong Harmony School, Chipata Compound, Kitwe"
     },
     {
       "id": 2,
-      "title": "New Gen Service",
+      "title": "Kids at New Gen Service",
       "time": "Saturday, 08:30",
-      "location": "Lifesong Harmony School"
+      "location": "Lifesong Harmony School, Chipata Compound, Kitwe"
+    },
+    {
+      "id": 3,
+      "title": "Kids at Sunday Service",
+      "time": "Sundays, 09hrs",
+      "location": "Lifesong Harmony School, Chipata Compound, Kitwe"
     }
   ],
   "cellgroupHero": {
