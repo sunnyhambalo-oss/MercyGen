@@ -601,6 +601,14 @@ h3 {
   padding: 72px 0 30px;
 }
 
+body[data-page="about"] .page-hero h1 {
+  font-size: clamp(2.6rem, 5vw, 4.8rem);
+}
+
+body[data-page="about"] .page-hero .lead {
+  font-size: 1rem;
+}
+
 body[data-page="college"] .page-hero h1,
 body[data-page="high-school"] .page-hero h1,
 body[data-page="kids"] .page-hero h1,
@@ -784,6 +792,20 @@ label {
   padding: 24px;
 }
 
+.about-lead-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.leader-photo {
+  display: block;
+  width: 100%;
+  min-height: 520px;
+  max-height: 680px;
+  object-fit: cover;
+  object-position: center top;
+}
+
 .leader-photo-placeholder {
   width: min(100%, 320px);
   height: 320px;
@@ -841,6 +863,29 @@ label {
   font-size: 0.85rem;
   text-align: center;
   padding: 10px;
+}
+
+.qr-note {
+  margin-top: 18px;
+}
+
+.paypal-qr-placeholder {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  padding: 8px;
+}
+
+.paypal-qr-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .zelle-qr-placeholder img {
@@ -923,9 +968,13 @@ label {
     padding: 18px;
   }
 
-  .leader-photo-placeholder {
-    width: min(100%, 220px);
-    height: 220px;
+  .about-lead-card {
+    padding: 0;
+  }
+
+  .leader-photo {
+    min-height: 360px;
+    max-height: 520px;
   }
 
   .section-head,

@@ -285,18 +285,36 @@ body {
   border-left-color: var(--accent);
 }
 
+.page-nav-btn {
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
 .admin-content {
   padding: 40px;
   background: var(--bg);
 }
 
-.section-editor {
+.page-editor {
   display: none;
   animation: fadeIn 0.2s ease;
 }
 
-.section-editor.active {
+.page-editor.active {
   display: block;
+}
+
+.section-editor {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.section-editor:last-child {
+  margin-bottom: 0;
 }
 
 @keyframes fadeIn {
@@ -309,8 +327,8 @@ body {
 }
 
 .section-editor h2 {
-  font-size: 1.8rem;
-  margin-bottom: 30px;
+  font-size: 1.45rem;
+  margin-bottom: 24px;
   letter-spacing: -0.03em;
 }
 
@@ -548,6 +566,11 @@ body {
 
   .admin-content {
     padding: 20px;
+  }
+
+  .section-editor {
+    padding: 20px;
+    border-radius: 14px;
   }
 
   .login-card {

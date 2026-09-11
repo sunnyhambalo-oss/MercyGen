@@ -11,8 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <!-- Replace YOUR_CLIENT_ID with the PayPal Business app Client ID before going live -->
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=buttons&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYKiXWPP8rap1NaBd_Yo8qec9O5r-oDNvVtCZ7NixD_4_lDyQjg6jPaglOpKTE3tiNw-XH4LGX1MBbZb&components=buttons&currency=USD"></script>
     <script src="script.js" defer></script>
   </head>
   <body data-page="donate">
@@ -75,10 +74,15 @@
 
           <div class="card donation-form-card give-options">
             <div class="give-option paypal-card">
-              <h3>Give with PayPal</h3>
-              <p class="verse-note">Pay with PayPal balance, card, or Google Pay (once enabled in our PayPal account) — amount and purpose are carried over automatically.</p>
+              <h3>Give safely with PayPal</h3>
+              <p class="verse-note">Choose your amount, then use PayPal or a card to give. You can also scan the PayPal code below.</p>
               <div id="paypal-button-container"></div>
               <p class="give-status" id="paypal-status" role="status"></p>
+              <p class="verse-note qr-note">Prefer your phone? Scan this code:</p>
+              <div class="paypal-qr-placeholder">
+                <img src="Images/paypal-qr.png" alt="PayPal QR code for MercyGen Church" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+                <span style="display:none">PayPal QR code unavailable</span>
+              </div>
             </div>
 
             <div class="give-option zelle-card">
@@ -86,8 +90,8 @@
               <p class="verse-note">Open your banking app, choose Zelle, and send to the email below.</p>
               <p class="zelle-email">terencepage144@gmail.com</p>
               <div class="zelle-qr-placeholder">
-                <img src="Images/zelle-qr.png" alt="Zelle QR code" onerror="this.style.display='none'" />
-                <span>QR code coming soon</span>
+                <img src="Images/zelle-qr.png" alt="Zelle QR code for Terence Page" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+                <span style="display:none">QR code unavailable</span>
               </div>
             </div>
           </div>

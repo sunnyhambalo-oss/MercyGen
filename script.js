@@ -287,7 +287,11 @@ function renderAboutContent() {
 
   const storyTitleEl = document.getElementById('about-story-title');
   const storyTarget = document.getElementById('about-story-paragraphs');
+  const leaderImageEl = document.getElementById('about-leader-image');
   if (storyTitleEl) storyTitleEl.textContent = about.storyTitle || '';
+  if (leaderImageEl && about.image) {
+    leaderImageEl.src = about.image;
+  }
 
   const paragraphs = Array.isArray(about.storyParagraphs)
     ? about.storyParagraphs

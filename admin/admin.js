@@ -4,17 +4,51 @@ let currentContent = {};
 let editingItem = null;
 let editingSection = null;
 
+const pageSections = {
+  home: ['hero', 'mission', 'greatLove', 'categories', 'clips', 'updates', 'serviceLocations'],
+  about: ['about'],
+  college: ['collegeHero', 'collegeFeatures', 'collegeSchedule'],
+  highSchool: ['highSchoolHero', 'highSchoolFeatures', 'highSchoolSchedule'],
+  kids: ['kidsHero', 'kidsFeatures', 'kidsSchedule'],
+  cellgroup: ['cellgroupHero', 'cellgroupGather', 'cellgroupValues', 'cellgroupSchedule'],
+  giving: ['donateHero']
+};
+
+const arraySections = [
+  'categories', 'clips', 'updates', 'serviceLocations',
+  'collegeFeatures', 'collegeSchedule',
+  'highSchoolFeatures', 'highSchoolSchedule',
+  'kidsFeatures', 'kidsSchedule',
+  'cellgroupValues', 'cellgroupSchedule'
+];
+
+const itemNames = {
+  categories: 'group',
+  clips: 'short video',
+  updates: 'news item',
+  serviceLocations: 'meeting place',
+  collegeFeatures: 'thing we do',
+  collegeSchedule: 'meeting time',
+  highSchoolFeatures: 'thing we do',
+  highSchoolSchedule: 'meeting time',
+  kidsFeatures: 'thing we do',
+  kidsSchedule: 'meeting time',
+  cellgroupValues: 'belief',
+  cellgroupSchedule: 'meeting time'
+};
+
 // ==================== Initialization ====================
 
 document.addEventListener('DOMContentLoaded', () => {
   loadContent();
   document.getElementById('logout-btn').addEventListener('click', handleLogout);
   setupGreatLoveUploads();
+  setupAboutUpload();
 
   // Navigation
-  document.querySelectorAll('.nav-btn').forEach(btn => {
+  document.querySelectorAll('.page-nav-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      switchSection(e.target.dataset.section);
+      switchPage(e.currentTarget.dataset.page);
     });
   });
 
@@ -44,39 +78,28 @@ function redirectIfUnauthorized(response) {
   return false;
 }
 
-function switchSection(sectionName) {
-  // Update active nav button
-  document.querySelectorAll('.nav-btn').forEach(btn => {
+function switchPage(pageName) {
+  const sections = pageSections[pageName] || [];
+
+  document.querySelectorAll('.page-nav-btn').forEach(btn => {
     btn.classList.remove('active');
-    if (btn.dataset.section === sectionName) {
+    if (btn.dataset.page === pageName) {
       btn.classList.add('active');
     }
   });
 
-  // Show section
-  document.querySelectorAll('.section-editor').forEach(section => {
-    section.classList.remove('active');
+  document.querySelectorAll('.page-editor').forEach(page => {
+    page.classList.remove('active');
   });
-  document.getElementById(sectionName).classList.add('active');
+  document.getElementById(`${pageName}-page`).classList.add('active');
 
-  // Load content for array sections
-  const arraySections = [
-    'categories', 'clips', 'updates', 'serviceLocations',
-    'collegeFeatures', 'collegeSchedule',
-    'highSchoolFeatures', 'highSchoolSchedule',
-    'kidsFeatures', 'kidsSchedule',
-    'cellgroupValues', 'cellgroupSchedule'
-  ];
-  const singleSections = [
-    'hero', 'mission', 'about', 'greatLove',
-    'collegeHero', 'highSchoolHero', 'kidsHero',
-    'cellgroupHero', 'cellgroupGather', 'donateHero'
-  ];
-  if (arraySections.includes(sectionName)) {
-    renderItemsList(sectionName);
-  } else if (singleSections.includes(sectionName)) {
-    loadSectionForm(sectionName);
-  }
+  sections.forEach(sectionName => {
+    if (arraySections.includes(sectionName)) {
+      renderItemsList(sectionName);
+    } else {
+      loadSectionForm(sectionName);
+    }
+  });
 }
 
 function showNotification(message, type = 'success') {
@@ -98,6 +121,7 @@ async function loadContent() {
     if (redirectIfUnauthorized(response)) return;
     if (!response.ok) throw new Error('Failed to load content');
     currentContent = await response.json();
+    switchPage('home');
   } catch (err) {
     showNotification(err.message, 'error');
   }
@@ -123,6 +147,8 @@ function loadSectionForm(sectionName) {
     document.getElementById('about-eyebrow-input').value = section.eyebrow || '';
     document.getElementById('about-title-input').value = section.title || '';
     document.getElementById('about-lead-input').value = section.lead || '';
+    document.getElementById('about-image-input').value = section.image || '';
+    updateAboutImagePreview(section.image || '');
     document.getElementById('about-story-title-input').value = section.storyTitle || '';
     document.getElementById('about-story-text-input').value = Array.isArray(section.storyParagraphs)
       ? section.storyParagraphs.join('\n\n')
@@ -144,6 +170,60 @@ function loadSectionForm(sectionName) {
     document.getElementById('cellgroupGather-title-input').value = section.title || '';
     document.getElementById('cellgroupGather-description-input').value = section.description || '';
   }
+}
+
+function setupAboutUpload() {
+  const dropzone = document.getElementById('about-image-dropzone');
+  const input = document.getElementById('about-image-upload');
+  if (!dropzone || !input) return;
+
+  dropzone.addEventListener('click', () => input.click());
+  input.addEventListener('click', event => event.stopPropagation());
+  dropzone.addEventListener('dragover', event => {
+    event.preventDefault();
+    dropzone.classList.add('is-dragging');
+  });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('is-dragging'));
+  dropzone.addEventListener('drop', event => {
+    event.preventDefault();
+    dropzone.classList.remove('is-dragging');
+    uploadAboutImage(event.dataTransfer.files[0]);
+  });
+  input.addEventListener('change', () => {
+    uploadAboutImage(input.files[0]);
+    input.value = '';
+  });
+}
+
+async function uploadAboutImage(file) {
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    showNotification('Please choose a picture file.', 'error');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('image', file);
+
+  try {
+    const response = await fetch(`${API_BASE}/api/upload`, { method: 'POST', body: formData });
+    if (redirectIfUnauthorized(response)) return;
+    if (!response.ok) throw new Error('The picture could not be uploaded. Please try again.');
+
+    const data = await response.json();
+    document.getElementById('about-image-input').value = data.path;
+    updateAboutImagePreview(data.path);
+    showNotification('About page picture added!', 'success');
+  } catch (err) {
+    showNotification(err.message, 'error');
+  }
+}
+
+function updateAboutImagePreview(path) {
+  const preview = document.getElementById('about-image-preview');
+  if (!preview) return;
+  preview.src = path || '';
+  preview.style.display = path ? 'block' : 'none';
 }
 
 function setupGreatLoveUploads() {
@@ -198,7 +278,7 @@ async function uploadGreatLoveFile(file, fieldType) {
     });
 
     if (redirectIfUnauthorized(response)) return;
-    if (!response.ok) throw new Error('Upload failed');
+    if (!response.ok) throw new Error('The upload did not work. Please try again.');
 
     const data = await response.json();
     document.getElementById(`great-love-${fieldType}-input`).value = data.path;
@@ -258,6 +338,7 @@ async function saveSection(sectionName) {
         eyebrow: document.getElementById('about-eyebrow-input').value,
         title: document.getElementById('about-title-input').value,
         lead: document.getElementById('about-lead-input').value,
+        image: document.getElementById('about-image-input').value,
         storyTitle: document.getElementById('about-story-title-input').value,
         storyParagraphs: storyText
           .split(/\n\s*\n/)
@@ -319,11 +400,11 @@ function renderItemsList(sectionName) {
       <div class="item-card">
         <div class="item-card-content">
           <h3>${display}</h3>
-          <p>ID: ${item.id}</p>
+          <p>${itemNames[sectionName] || 'item'}</p>
         </div>
         <div class="item-card-actions">
-          <button class="btn btn-primary btn-small" onclick="editItem('${sectionName}', ${item.id})">Edit</button>
-          <button class="btn btn-danger btn-small" onclick="deleteItem('${sectionName}', ${item.id})">Delete</button>
+          <button class="btn btn-primary btn-small" onclick="editItem('${sectionName}', ${item.id})">Change</button>
+          <button class="btn btn-danger btn-small" onclick="deleteItem('${sectionName}', ${item.id})">Remove</button>
         </div>
       </div>
     `;
@@ -343,28 +424,29 @@ function openItemModal(sectionName, item) {
   const title = document.getElementById('modal-title');
   const body = document.getElementById('modal-body');
 
-  title.textContent = `Edit ${sectionName.slice(0, -1)}`;
+  const itemName = itemNames[sectionName] || 'item';
+  title.textContent = item.id ? `Change this ${itemName}` : `Add a ${itemName}`;
 
   let formHTML = '';
 
   if (sectionName === 'categories') {
     formHTML = `
       <div class="form-group">
-        <label>Category Name</label>
+        <label>Group name</label>
         <input type="text" class="form-input item-field" data-field="name" value="${item.name}">
       </div>
       <div class="form-group">
-        <label>Link</label>
+        <label>Page to open</label>
         <input type="text" class="form-input item-field" data-field="link" value="${item.link}">
       </div>
       <div class="form-group">
-        <label>Image Path</label>
+        <label>Picture file</label>
         <input type="text" class="form-input item-field" data-field="image" value="${item.image}">
       </div>
       <div class="form-group">
-        <label>Upload New Image</label>
+        <label>Add a picture</label>
         <div class="file-input-group" onclick="document.getElementById('cat-image-upload').click()">
-          <p>Click to upload or drag and drop</p>
+          <p>Click here or drag a picture here</p>
           <input type="file" id="cat-image-upload" accept="image/*" onchange="uploadItemFile(event, 'image')">
         </div>
         <img id="item-image-preview" class="image-preview" style="display:none;">
@@ -373,21 +455,21 @@ function openItemModal(sectionName, item) {
   } else if (sectionName === 'categories') {
     formHTML = `
       <div class="form-group">
-        <label>Category Name</label>
+        <label>Group name</label>
         <input type="text" class="form-input item-field" data-field="name" value="${item.name}">
       </div>
       <div class="form-group">
-        <label>Link</label>
+        <label>Page to open</label>
         <input type="text" class="form-input item-field" data-field="link" value="${item.link}">
       </div>
       <div class="form-group">
-        <label>Image Path</label>
+        <label>Picture file</label>
         <input type="text" class="form-input item-field" data-field="image" value="${item.image}">
       </div>
       <div class="form-group">
-        <label>Upload New Image</label>
+        <label>Add a picture</label>
         <div class="file-input-group" onclick="document.getElementById('item-image-upload').click()">
-          <p>Click to upload or drag and drop</p>
+          <p>Click here or drag a picture here</p>
           <input type="file" id="item-image-upload" accept="image/*" onchange="uploadItemImage(event)">
         </div>
         <img id="item-image-preview" class="image-preview" style="display:none;">
@@ -396,36 +478,36 @@ function openItemModal(sectionName, item) {
   } else if (sectionName === 'clips') {
     formHTML = `
       <div class="form-group">
-        <label>Title</label>
+        <label>Video title</label>
         <input type="text" class="form-input item-field" data-field="title" value="${item.title}">
       </div>
       <div class="form-group">
-        <label>Tag</label>
+        <label>Small label</label>
         <input type="text" class="form-input item-field" data-field="tag" value="${item.tag}">
       </div>
       <div class="form-group">
-        <label>Description</label>
+        <label>Short description</label>
         <textarea class="form-textarea item-field" data-field="description" rows="3">${item.description}</textarea>
       </div>
       <div class="form-group">
-        <label>Image Path</label>
+        <label>Picture file</label>
         <input type="text" class="form-input item-field" data-field="image" value="${item.image}">
       </div>
       <div class="form-group">
-        <label>Upload New Image</label>
+        <label>Add a picture</label>
         <div class="file-input-group" onclick="document.getElementById('clip-image-upload').click()">
-          <p>Click to upload image or drag and drop</p>
+          <p>Click here or drag a picture here</p>
           <input type="file" id="clip-image-upload" accept="image/*" onchange="uploadItemFile(event, 'image')">
         </div>
       </div>
       <div class="form-group">
-        <label>Video Path</label>
+        <label>Video file</label>
         <input type="text" class="form-input item-field" data-field="video" value="${item.video}">
       </div>
       <div class="form-group">
-        <label>Upload New Video</label>
+        <label>Add a video</label>
         <div class="file-input-group" onclick="document.getElementById('clip-video-upload').click()">
-          <p>Click to upload video (MP4, WebM, MOV)</p>
+          <p>Click here or drag a video here</p>
           <input type="file" id="clip-video-upload" accept="video/*" onchange="uploadItemFile(event, 'video')">
         </div>
       </div>
@@ -433,53 +515,53 @@ function openItemModal(sectionName, item) {
   } else if (sectionName === 'updates') {
     formHTML = `
       <div class="form-group">
-        <label>Date</label>
+        <label>Day or date</label>
         <input type="text" class="form-input item-field" data-field="date" value="${item.date}">
       </div>
       <div class="form-group">
-        <label>Month</label>
+        <label>Month name</label>
         <input type="text" class="form-input item-field" data-field="month" value="${item.month}">
       </div>
       <div class="form-group">
-        <label>Tag</label>
+        <label>Small label</label>
         <input type="text" class="form-input item-field" data-field="tag" value="${item.tag}">
       </div>
       <div class="form-group">
-        <label>Title</label>
+        <label>News title</label>
         <input type="text" class="form-input item-field" data-field="title" value="${item.title}">
       </div>
       <div class="form-group">
-        <label>Description</label>
+        <label>News words</label>
         <textarea class="form-textarea item-field" data-field="description" rows="3">${item.description}</textarea>
       </div>
     `;
   } else if (sectionName === 'serviceLocations' || sectionName.endsWith('Schedule')) {
     formHTML = `
       <div class="form-group">
-        <label>Location Title</label>
+        <label>Meeting name</label>
         <input type="text" class="form-input item-field" data-field="title" value="${item.title}">
       </div>
       <div class="form-group">
-        <label>Day & Time</label>
+        <label>Day and time</label>
         <input type="text" class="form-input item-field" data-field="time" value="${item.time}">
       </div>
       <div class="form-group">
-        <label>Location</label>
+        <label>Where it happens</label>
         <input type="text" class="form-input item-field" data-field="location" value="${item.location || ''}">
       </div>
     `;
   } else if (sectionName.endsWith('Features') || sectionName === 'cellgroupValues') {
     formHTML = `
       <div class="form-group">
-        <label>Tag</label>
+        <label>Small label</label>
         <input type="text" class="form-input item-field" data-field="tag" value="${item.tag || ''}">
       </div>
       <div class="form-group">
-        <label>Title</label>
+        <label>Heading</label>
         <input type="text" class="form-input item-field" data-field="title" value="${item.title}">
       </div>
       <div class="form-group">
-        <label>Description</label>
+        <label>Short description</label>
         <textarea class="form-textarea item-field" data-field="description" rows="3">${item.description}</textarea>
       </div>
     `;
@@ -515,19 +597,20 @@ async function saveItem() {
     });
 
     if (redirectIfUnauthorized(response)) return;
-    if (!response.ok) throw new Error('Failed to save item');
+    if (!response.ok) throw new Error('Your changes could not be saved. Please try again.');
 
     await loadContent();
     renderItemsList(editingSection);
     closeItemModal();
-    showNotification('Item saved successfully!', 'success');
+    showNotification('Your changes are saved!', 'success');
   } catch (err) {
     showNotification(err.message, 'error');
   }
 }
 
 async function deleteItem(sectionName, itemId) {
-  if (!confirm('Are you sure you want to delete this item?')) return;
+  const itemName = itemNames[sectionName] || 'item';
+  if (!confirm(`Remove this ${itemName}? You cannot undo this.`)) return;
 
   try {
     const response = await fetch(`${API_BASE}/api/content/${sectionName}/${itemId}`, {
@@ -535,11 +618,11 @@ async function deleteItem(sectionName, itemId) {
     });
 
     if (redirectIfUnauthorized(response)) return;
-    if (!response.ok) throw new Error('Failed to delete item');
+    if (!response.ok) throw new Error('It could not be removed. Please try again.');
 
     await loadContent();
     renderItemsList(sectionName);
-    showNotification('Item deleted successfully!', 'success');
+    showNotification('It has been removed.', 'success');
   } catch (err) {
     showNotification(err.message, 'error');
   }
@@ -589,12 +672,13 @@ window.saveItem = async function() {
     });
 
     if (redirectIfUnauthorized(response)) return;
-    if (!response.ok) throw new Error('Failed to save item');
+    if (!response.ok) throw new Error('Your changes could not be saved. Please try again.');
 
     await loadContent();
     renderItemsList(editingSection);
     closeItemModal();
-    showNotification(`Item ${editingItem.id ? 'updated' : 'created'} successfully!`, 'success');
+    const itemName = itemNames[editingSection] || 'item';
+    showNotification(`Your ${itemName} is ${editingItem.id ? 'updated' : 'added'}!`, 'success');
   } catch (err) {
     showNotification(err.message, 'error');
   }
@@ -616,7 +700,7 @@ async function uploadItemFile(event, fieldType = 'image') {
     });
 
     if (redirectIfUnauthorized(response)) return;
-    if (!response.ok) throw new Error('Upload failed');
+    if (!response.ok) throw new Error('The upload did not work. Please try again.');
 
     const data = await response.json();
     
@@ -637,7 +721,7 @@ async function uploadItemFile(event, fieldType = 'image') {
       }
     }
     
-    showNotification(`${fieldType === 'video' ? 'Video' : 'Image'} uploaded successfully!`, 'success');
+    showNotification(`${fieldType === 'video' ? 'Video' : 'Picture'} added!`, 'success');
   } catch (err) {
     showNotification(err.message, 'error');
   }
