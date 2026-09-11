@@ -913,8 +913,19 @@ label {
   .feature-grid,
   .devotional-layout,
   .donate-layout,
-  .cellgroup-layout {
+  .cellgroup-layout,
+  .about-layout {
     grid-template-columns: 1fr;
+  }
+
+  .about-lead-card,
+  .about-story-card {
+    padding: 18px;
+  }
+
+  .leader-photo-placeholder {
+    width: min(100%, 220px);
+    height: 220px;
   }
 
   .section-head,
