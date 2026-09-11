@@ -772,6 +772,89 @@ label {
   margin-bottom: 18px;
 }
 
+.about-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.about-lead-card,
+.about-story-card {
+  padding: 24px;
+}
+
+.leader-photo-placeholder {
+  width: min(100%, 320px);
+  height: 320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px dashed var(--line);
+  border-radius: 24px;
+  background: #f7f7f8;
+  color: var(--muted);
+  font-weight: 700;
+  text-align: center;
+}
+
+.give-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.give-option h3 {
+  margin-bottom: 8px;
+}
+
+.give-status {
+  color: var(--accent);
+  font-weight: 600;
+  min-height: 1.2em;
+}
+
+.zelle-email {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 12px;
+  padding: 0.5rem 0.9rem;
+  font-weight: 700;
+  margin: 10px 0 16px;
+}
+
+.zelle-qr-placeholder {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px dashed var(--line);
+  border-radius: 16px;
+  background: #f7f7f8;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 10px;
+}
+
+.zelle-qr-placeholder img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
+@media (max-width: 760px) {
+  .give-options {
+    grid-template-columns: 1fr;
+  }
+}
+
 .devotion-list {
   display: grid;
   gap: 16px;

@@ -17,27 +17,43 @@
 
     <div class="admin-body">
       <nav class="admin-nav">
-        <button class="nav-btn active" data-section="hero">Hero Section</button>
-        <button class="nav-btn" data-section="mission">Mission</button>
-        <button class="nav-btn" data-section="greatLove">Our Great Love</button>
-        <button class="nav-btn" data-section="categories">Categories</button>
-        <button class="nav-btn" data-section="clips">Clips</button>
-        <button class="nav-btn" data-section="updates">Updates</button>
-        <button class="nav-btn" data-section="serviceLocations">Service Locations</button>
-        <button class="nav-btn" data-section="collegeHero">College - Hero</button>
-        <button class="nav-btn" data-section="collegeFeatures">College - Features</button>
-        <button class="nav-btn" data-section="collegeSchedule">College - Schedule</button>
-        <button class="nav-btn" data-section="highSchoolHero">High School - Hero</button>
-        <button class="nav-btn" data-section="highSchoolFeatures">High School - Features</button>
-        <button class="nav-btn" data-section="highSchoolSchedule">High School - Schedule</button>
-        <button class="nav-btn" data-section="kidsHero">Kids - Hero</button>
-        <button class="nav-btn" data-section="kidsFeatures">Kids - Features</button>
-        <button class="nav-btn" data-section="kidsSchedule">Kids - Schedule</button>
-        <button class="nav-btn" data-section="cellgroupHero">Cell Group - Hero</button>
-        <button class="nav-btn" data-section="cellgroupGather">Cell Group - Why We Gather</button>
-        <button class="nav-btn" data-section="cellgroupValues">Cell Group - Values</button>
-        <button class="nav-btn" data-section="cellgroupSchedule">Cell Group - Schedule</button>
-        <button class="nav-btn" data-section="donateHero">Donate - Hero</button>
+        <div class="nav-group">
+          <div class="nav-group-label">Home</div>
+          <button class="nav-btn active" data-section="hero">Home Hero</button>
+          <button class="nav-btn" data-section="mission">Mission</button>
+          <button class="nav-btn" data-section="about">About Page</button>
+          <button class="nav-btn" data-section="greatLove">Our Great Love</button>
+          <button class="nav-btn" data-section="categories">Category Cards</button>
+          <button class="nav-btn" data-section="clips">Clips</button>
+          <button class="nav-btn" data-section="updates">Updates</button>
+          <button class="nav-btn" data-section="serviceLocations">Service Locations</button>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-label">Ministries</div>
+          <button class="nav-btn" data-section="collegeHero">College - Hero</button>
+          <button class="nav-btn" data-section="collegeFeatures">College - Features</button>
+          <button class="nav-btn" data-section="collegeSchedule">College - Schedule</button>
+          <button class="nav-btn" data-section="highSchoolHero">High School - Hero</button>
+          <button class="nav-btn" data-section="highSchoolFeatures">High School - Features</button>
+          <button class="nav-btn" data-section="highSchoolSchedule">High School - Schedule</button>
+          <button class="nav-btn" data-section="kidsHero">Kids - Hero</button>
+          <button class="nav-btn" data-section="kidsFeatures">Kids - Features</button>
+          <button class="nav-btn" data-section="kidsSchedule">Kids - Schedule</button>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-label">Cell Groups</div>
+          <button class="nav-btn" data-section="cellgroupHero">Cell Group - Hero</button>
+          <button class="nav-btn" data-section="cellgroupGather">Why We Gather</button>
+          <button class="nav-btn" data-section="cellgroupValues">Cell Group - Values</button>
+          <button class="nav-btn" data-section="cellgroupSchedule">Cell Group - Schedule</button>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-label">Giving</div>
+          <button class="nav-btn" data-section="donateHero">Donate - Hero</button>
+        </div>
       </nav>
 
       <main class="admin-content">
@@ -91,6 +107,32 @@
             <textarea id="mission-description" class="form-textarea" rows="3"></textarea>
           </div>
           <button class="btn btn-primary" onclick="saveSection('mission')">Save Changes</button>
+        </section>
+
+        <!-- About Page Section -->
+        <section id="about" class="section-editor">
+          <h2>About Page</h2>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="about-eyebrow-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="about-title-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Lead Paragraph</label>
+            <textarea id="about-lead-input" class="form-textarea" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Story Title</label>
+            <input type="text" id="about-story-title-input" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Story Paragraphs (separate paragraphs with a blank line)</label>
+            <textarea id="about-story-text-input" class="form-textarea" rows="6"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('about')">Save Changes</button>
         </section>
 
         <!-- Our Great Love Section -->

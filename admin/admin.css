@@ -237,14 +237,31 @@ body {
   border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
+  gap: 18px;
+  padding: 20px 12px 20px 0;
   position: sticky;
   top: 80px;
   height: fit-content;
 }
 
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 0 0 12px;
+}
+
+.nav-group-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 12px 8px;
+}
+
 .nav-btn {
-  padding: 14px 18px;
+  padding: 12px 14px;
   border: none;
   background: transparent;
   color: var(--muted);
@@ -254,6 +271,7 @@ body {
   font-size: 0.9rem;
   transition: all 0.2s ease;
   border-left: 3px solid transparent;
+  border-radius: 0 10px 10px 0;
 }
 
 .nav-btn:hover {

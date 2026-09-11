@@ -11,6 +11,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Replace YOUR_CLIENT_ID with the PayPal Business app Client ID before going live -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=buttons&currency=USD"></script>
     <script src="script.js" defer></script>
   </head>
   <body data-page="donate">
@@ -22,6 +24,7 @@
         </a>
         <nav class="nav-links" aria-label="Main navigation">
           <a href="index.html">Home</a>
+          <a href="about.html">About</a>
           <a href="college.html">College</a>
           <a href="high-school.html">High School</a>
           <a href="kids.html">Kids</a>
@@ -70,33 +73,23 @@
             </label>
           </div>
 
-          <div class="card donation-form-card">
-            <h3>Secure donation</h3>
-            <form>
-              <label>
-                Full name
-                <input type="text" placeholder="Your name" required />
-              </label>
-              <label>
-                Email
-                <input type="email" placeholder="you@example.com" required />
-              </label>
-              <label>
-                Card number
-                <input type="text" placeholder="•••• •••• •••• ••••" required />
-              </label>
-              <div class="split-fields">
-                <label>
-                  Expiry
-                  <input type="text" placeholder="MM/YY" required />
-                </label>
-                <label>
-                  CVC
-                  <input type="text" placeholder="123" required />
-                </label>
+          <div class="card donation-form-card give-options">
+            <div class="give-option paypal-card">
+              <h3>Give with PayPal</h3>
+              <p class="verse-note">Pay with PayPal balance, card, or Google Pay (once enabled in our PayPal account) — amount and purpose are carried over automatically.</p>
+              <div id="paypal-button-container"></div>
+              <p class="give-status" id="paypal-status" role="status"></p>
+            </div>
+
+            <div class="give-option zelle-card">
+              <h3>Give with Zelle</h3>
+              <p class="verse-note">Open your banking app, choose Zelle, and send to the email below.</p>
+              <p class="zelle-email">terencepage144@gmail.com</p>
+              <div class="zelle-qr-placeholder">
+                <img src="Images/zelle-qr.png" alt="Zelle QR code" onerror="this.style.display='none'" />
+                <span>QR code coming soon</span>
               </div>
-              <button type="submit" class="button button-primary full-width">Donate securely</button>
-            </form>
+            </div>
           </div>
         </div>
       </section>

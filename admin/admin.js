@@ -68,7 +68,7 @@ function switchSection(sectionName) {
     'cellgroupValues', 'cellgroupSchedule'
   ];
   const singleSections = [
-    'hero', 'mission', 'greatLove',
+    'hero', 'mission', 'about', 'greatLove',
     'collegeHero', 'highSchoolHero', 'kidsHero',
     'cellgroupHero', 'cellgroupGather', 'donateHero'
   ];
@@ -119,6 +119,14 @@ function loadSectionForm(sectionName) {
     document.getElementById('mission-eyebrow').value = section.eyebrow || '';
     document.getElementById('mission-title').value = section.title || '';
     document.getElementById('mission-description').value = section.description || '';
+  } else if (sectionName === 'about') {
+    document.getElementById('about-eyebrow-input').value = section.eyebrow || '';
+    document.getElementById('about-title-input').value = section.title || '';
+    document.getElementById('about-lead-input').value = section.lead || '';
+    document.getElementById('about-story-title-input').value = section.storyTitle || '';
+    document.getElementById('about-story-text-input').value = Array.isArray(section.storyParagraphs)
+      ? section.storyParagraphs.join('\n\n')
+      : '';
   } else if (sectionName === 'greatLove') {
     document.getElementById('great-love-eyebrow-input').value = section.eyebrow || '';
     document.getElementById('great-love-title-input').value = section.title || '';
@@ -243,6 +251,18 @@ async function saveSection(sectionName) {
         eyebrow: document.getElementById('mission-eyebrow').value,
         title: document.getElementById('mission-title').value,
         description: document.getElementById('mission-description').value
+      };
+    } else if (sectionName === 'about') {
+      const storyText = document.getElementById('about-story-text-input').value;
+      data = {
+        eyebrow: document.getElementById('about-eyebrow-input').value,
+        title: document.getElementById('about-title-input').value,
+        lead: document.getElementById('about-lead-input').value,
+        storyTitle: document.getElementById('about-story-title-input').value,
+        storyParagraphs: storyText
+          .split(/\n\s*\n/)
+          .map(part => part.trim())
+          .filter(Boolean)
       };
     } else if (sectionName === 'greatLove') {
       data = {

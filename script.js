@@ -41,6 +41,7 @@ async function loadAppContent() {
     renderPageHero('cellgroup', appContent.cellgroupHero);
     renderCellgroupExtras();
     renderPageSchedule('cellgroup', appContent.cellgroupSchedule);
+    renderAboutContent();
     renderPageHero('donate', appContent.donateHero);
     console.log('Content loaded');
   } catch (err) {
@@ -272,6 +273,33 @@ function renderCellgroupExtras() {
   }
 }
 
+function renderAboutContent() {
+  if (document.body.dataset.page !== 'about') return;
+
+  const about = appContent.about || {};
+  const eyebrowEl = document.getElementById('about-hero-eyebrow');
+  const titleEl = document.getElementById('about-hero-title');
+  const leadEl = document.getElementById('about-hero-lead');
+
+  if (eyebrowEl) eyebrowEl.textContent = about.eyebrow || '';
+  if (titleEl) titleEl.textContent = about.title || '';
+  if (leadEl) leadEl.textContent = about.lead || '';
+
+  const storyTitleEl = document.getElementById('about-story-title');
+  const storyTarget = document.getElementById('about-story-paragraphs');
+  if (storyTitleEl) storyTitleEl.textContent = about.storyTitle || '';
+
+  const paragraphs = Array.isArray(about.storyParagraphs)
+    ? about.storyParagraphs
+    : typeof about.storyText === 'string'
+      ? about.storyText.split(/\n\s*\n/)
+      : [];
+
+  if (storyTarget) {
+    storyTarget.innerHTML = paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('');
+  }
+}
+
 function updateVerse(version) {
   const verse = verseTranslations[version] || verseTranslations.NIV;
   const referenceEl = document.getElementById('verse-reference');
@@ -296,6 +324,39 @@ function bindDonationAmount() {
       if (custom) custom.value = button.dataset.amount || '';
     });
   });
+}
+
+function bindPayPalButtons() {
+  const container = document.getElementById('paypal-button-container');
+  const status = document.getElementById('paypal-status');
+  if (!container || typeof paypal === 'undefined') return;
+
+  const getAmount = () => {
+    const custom = document.getElementById('custom-amount');
+    const value = parseFloat(custom && custom.value ? custom.value : '');
+    return Number.isFinite(value) && value > 0 ? value.toFixed(2) : '50.00';
+  };
+
+  const getPurpose = () => {
+    const purpose = document.getElementById('donation-purpose');
+    return purpose ? purpose.value : 'General mission';
+  };
+
+  paypal.Buttons({
+    createOrder: (data, actions) => actions.order.create({
+      purchase_units: [{
+        description: getPurpose(),
+        amount: { value: getAmount() }
+      }]
+    }),
+    onApprove: (data, actions) => actions.order.capture().then(() => {
+      if (status) status.textContent = 'Thank you for your gift!';
+    }),
+    onError: (err) => {
+      console.error('PayPal checkout error:', err);
+      if (status) status.textContent = 'Something went wrong. Please try again.';
+    }
+  }).render('#paypal-button-container');
 }
 
 function bindDevotionForm() {
@@ -335,6 +396,7 @@ function init() {
   updateVerse('NIV');
   bindVerseSelector();
   bindDonationAmount();
+  bindPayPalButtons();
   bindDevotionForm();
 }
 
