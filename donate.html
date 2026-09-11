@@ -39,15 +39,19 @@
       <section class="page-hero">
         <div class="container narrow-hero">
           <p class="eyebrow" id="donate-hero-eyebrow">Support the mission</p>
-          <h1 id="donate-hero-title">Give with purpose.</h1>
-          <p class="lead" id="donate-hero-lead">Every contribution helps us serve, disciple, and reach people with the love of Christ.</p>
+          <h1 id="donate-hero-title">Give with purpose</h1>
+          <p class="lead" id="donate-hero-lead">Every contribution helps us serve, disciple, and reach people with the love of Christ</p>
         </div>
       </section>
 
       <section class="section">
         <div class="container donate-layout">
-          <div class="card donation-card">
-            <h3>Choose an amount</h3>
+          <div class="card donation-card donation-shell">
+            <div class="donation-step">
+              <h2>Choose The Way You Give</h2>
+              <p class="donation-step-label">Step 1: Choose An Amount</p>
+              <p class="verse-note">Select an amount and tell us what your gift supports.</p>
+            </div>
             <div class="amount-grid">
               <button class="amount-btn" data-amount="100">$100</button>
               <button class="amount-btn" data-amount="250">$250</button>
@@ -70,28 +74,50 @@
                 <option>Prayer and worship</option>
               </select>
             </label>
-          </div>
 
-          <div class="card donation-form-card give-options">
-            <div class="give-option paypal-card">
-              <h3>Give safely with PayPal</h3>
-              <p class="verse-note">Choose your amount, then use PayPal or a card to give. You can also scan the PayPal code below.</p>
-              <div id="paypal-button-container"></div>
-              <p class="give-status" id="paypal-status" role="status"></p>
-              <p class="verse-note qr-note">Prefer your phone? Scan this code:</p>
-              <div class="paypal-qr-placeholder">
-                <img src="Images/paypal-qr.png" alt="PayPal QR code for MercyGen Church" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
-                <span style="display:none">PayPal QR code unavailable</span>
+            <fieldset class="payment-methods">
+              <legend>Step 2: Choose a payment method</legend>
+              <div class="payment-method-options">
+                <label class="payment-method-option">
+                  <input type="radio" name="payment-method" value="paypal" checked />
+                  <span>
+                    <strong>PayPal</strong>
+                    <small>Pay with PayPal or a card</small>
+                  </span>
+                </label>
+                <label class="payment-method-option">
+                  <input type="radio" name="payment-method" value="zelle" />
+                  <span>
+                    <strong>Zelle</strong>
+                    <small>Send directly from your banking app</small>
+                  </span>
+                </label>
               </div>
-            </div>
+            </fieldset>
 
-            <div class="give-option zelle-card">
-              <h3>Give with Zelle</h3>
-              <p class="verse-note">Open your banking app, choose Zelle, and send to the email below.</p>
-              <p class="zelle-email">terencepage144@gmail.com</p>
-              <div class="zelle-qr-placeholder">
-                <img src="Images/zelle-qr.png" alt="Zelle QR code for Terence Page" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
-                <span style="display:none">QR code unavailable</span>
+            <div class="payment-panels">
+              <div class="give-option paypal-card payment-panel" id="paypal-panel">
+                <h3>Complete your gift with PayPal</h3>
+                <p class="verse-note">Use PayPal or a debit or credit card to give securely.</p>
+                <div id="paypal-button-container"></div>
+                <p class="give-status" id="paypal-status" role="status"></p>
+                <p class="verse-note qr-note">Prefer your phone? Scan this code:</p>
+                <div class="paypal-qr-placeholder">
+                  <img src="Images/Copilot_20260912_004521.png" alt="PayPal QR code for MercyGen Church" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+                  <span style="display:none">PayPal QR code unavailable</span>
+                </div>
+              </div>
+
+              <div class="give-option zelle-card payment-panel" id="zelle-panel" hidden>
+                <h3 class="zelle-brand-heading">
+                  Zelle
+                </h3>
+                <p class="verse-note">Open your banking app, choose Zelle, and send your gift to this email:</p>
+                <p class="zelle-email">terencepage144@gmail.com</p>
+                <div class="zelle-qr-placeholder">
+                  <img src="Images/zelle-qr.png" alt="Zelle QR code for Terence Page" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+                  <span style="display:none">QR code unavailable</span>
+                </div>
               </div>
             </div>
           </div>

@@ -1,8 +1,8 @@
 {
   "hero": {
     "eyebrow": "Christ-centered community",
-    "title": "Love God.<br>Love people.<br>Change the world.",
-    "subtitle": "Anointed and appointed for action.",
+    "title": "Love God<br>Love people<br>Change the world",
+    "subtitle": "Anointed and appointed for action",
     "cta": [
       {
         "text": "Give",
@@ -18,8 +18,8 @@
   },
   "about": {
     "eyebrow": "Our story",
-    "title": "Planting a Next Generation church of disciples and leaders In Zambia.",
-    "lead": "We are building a Christ-centered church in Kitwe, Zambia, where the presence of God is real and the next generation is empowered to lead.",
+    "title": "Planting a Next Generation church of disciples and leaders In Zambia",
+    "lead": "We are building a Christ-centered church in Kitwe, Zambia, where the presence of God is real and the next generation is empowered to lead",
     "image": "Images/WhatsApp Image 2026-09-11 at 11.44.19.jpeg",
     "storyTitle": "Following God's call to Kitwe",
     "storyParagraphs": [
@@ -179,8 +179,8 @@
   ],
   "collegeHero": {
     "eyebrow": "For university and college students",
-    "title": "Graduate with Purpose in Christ.",
-    "lead": "Raising the Next Generation of Leaders to impact their nation."
+    "title": "Graduate with Purpose in Christ",
+    "lead": "Raising the Next Generation of Leaders to impact their nation"
   },
   "collegeFeatures": [
     {
@@ -224,8 +224,8 @@
   ],
   "highSchoolHero": {
     "eyebrow": "For High Schools",
-    "title": "Discovering your identity in Christ.",
-    "lead": "Becoming part of God's family - and leaving how to conquer the false identity of the World."
+    "title": "Discovering your identity in Christ",
+    "lead": "Becoming part of God's family - and leaving how to conquer the false identity of the World"
   },
   "highSchoolFeatures": [
     {
@@ -263,8 +263,8 @@
   ],
   "kidsHero": {
     "eyebrow": "MercyGen Kids",
-    "title": "Loving Our Kids with Joy.",
-    "lead": "A safe, welcoming place where children discover Jesus, make friends, and learn that they are deeply loved by God."
+    "title": "Loving Our Kids with Joy",
+    "lead": "A safe, welcoming place where children discover Jesus, make friends, and learn that they are deeply loved by God"
   },
   "kidsFeatures": [
     {
@@ -303,7 +303,7 @@
   "cellgroupHero": {
     "eyebrow": "Small group family",
     "title": "Cell Groups",
-    "lead": "A place to become who God created you to be."
+    "lead": "A place to become who God created you to be"
   },
   "cellgroupGather": {
     "tag": "Purpose",
@@ -352,7 +352,7 @@
   ],
   "donateHero": {
     "eyebrow": "Support the mission",
-    "title": "Give with purpose.",
-    "lead": "Every contribution helps us serve, disciple, and reach people with the love of Christ."
+    "title": "Give with purpose",
+    "lead": "Every contribution helps us serve, disciple, and reach people with the love of Christ"
   }
 }

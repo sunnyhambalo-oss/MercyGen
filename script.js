@@ -330,6 +330,24 @@ function bindDonationAmount() {
   });
 }
 
+function bindPaymentMethod() {
+  const methods = document.querySelectorAll('input[name="payment-method"]');
+  const panels = {
+    paypal: document.getElementById('paypal-panel'),
+    zelle: document.getElementById('zelle-panel')
+  };
+
+  if (!methods.length || !panels.paypal || !panels.zelle) return;
+
+  methods.forEach((method) => {
+    method.addEventListener('change', () => {
+      Object.entries(panels).forEach(([name, panel]) => {
+        panel.hidden = method.value !== name;
+      });
+    });
+  });
+}
+
 function bindPayPalButtons() {
   const container = document.getElementById('paypal-button-container');
   const status = document.getElementById('paypal-status');
@@ -400,6 +418,7 @@ function init() {
   updateVerse('NIV');
   bindVerseSelector();
   bindDonationAmount();
+  bindPaymentMethod();
   bindPayPalButtons();
   bindDevotionForm();
 }

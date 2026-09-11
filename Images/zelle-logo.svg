@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 320" shape-rendering="geometricPrecision" role="img" aria-labelledby="title">
+  <title id="title">Zelle</title>
+  <rect width="768" height="320" fill="#7b19d8" />
+  <path fill="#fff" d="M78 18h48v42h58v42h-58v34l-104 130h106v42H78v-42H20v-42h58v-34l104-130H78V78H20V36h58V18Z" />
+  <text x="205" y="246" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="278" font-weight="700" letter-spacing="-18">elle</text>
+</svg>
