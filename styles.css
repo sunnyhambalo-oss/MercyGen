@@ -988,6 +988,25 @@ label {
   border-radius: 8px;
 }
 
+.paypal-qr-placeholder {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--line);
+  border-radius: 16px;
+  background: #f7f7f8;
+  padding: 10px;
+  margin: 16px 0;
+}
+
+.paypal-qr-placeholder img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
 .devotion-list {
   display: grid;
   gap: 16px;
