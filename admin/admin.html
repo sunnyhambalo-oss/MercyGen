@@ -82,8 +82,22 @@
           <button class="btn btn-primary" onclick="saveSection('mission')">Save this part</button>
         </section>
 
+        <!-- Categories Section -->
+        <section id="categories" class="section-editor">
+          <h2>Choose a group</h2>
+          <div id="categories-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('categories')">Add a group</button>
+        </section>
+
+        <!-- Clips Section -->
+        <section id="clips" class="section-editor">
+          <h2>Stories of grace</h2>
+          <div id="clips-list" class="items-list"></div>
+          <button class="btn btn-secondary" onclick="addItem('clips')">Add a short video</button>
+        </section>
+
         <section id="greatLove" class="section-editor">
-          <h2>Our video</h2>
+          <h2>Our Great Love</h2>
           <div class="form-group">
             <label>Small words above the title</label>
             <input type="text" id="great-love-eyebrow-input" class="form-input">
@@ -97,7 +111,7 @@
             <textarea id="great-love-description-input" class="form-textarea" rows="3"></textarea>
           </div>
           <div class="form-group">
-            <label>Video file</label>
+            <label>Optional video file</label>
             <input type="text" id="great-love-video-input" class="form-input">
             <div class="file-input-group media-dropzone" id="great-love-video-dropzone" role="button" tabindex="0">
               <p>Click here or drag a video here</p>
@@ -106,7 +120,7 @@
             <video id="great-love-video-preview" class="media-preview" controls style="display:none;"></video>
           </div>
           <div class="form-group">
-            <label>Picture shown before the video</label>
+            <label>Main image</label>
             <input type="text" id="great-love-image-input" class="form-input">
             <div class="file-input-group media-dropzone" id="great-love-image-dropzone" role="button" tabindex="0">
               <p>Click here or drag a picture here</p>
@@ -117,30 +131,16 @@
           <button class="btn btn-primary" onclick="saveSection('greatLove')">Save this part</button>
         </section>
 
-        <!-- Categories Section -->
-        <section id="categories" class="section-editor">
-          <h2>Choose a group</h2>
-          <div id="categories-list" class="items-list"></div>
-          <button class="btn btn-secondary" onclick="addItem('categories')">Add a group</button>
-        </section>
-
-        <!-- Clips Section -->
-        <section id="clips" class="section-editor">
-          <h2>Short videos</h2>
-          <div id="clips-list" class="items-list"></div>
-          <button class="btn btn-secondary" onclick="addItem('clips')">Add a short video</button>
-        </section>
-
         <!-- Updates Section -->
         <section id="updates" class="section-editor">
-          <h2>News and updates</h2>
+          <h2>What’s happening</h2>
           <div id="updates-list" class="items-list"></div>
           <button class="btn btn-secondary" onclick="addItem('updates')">Add news</button>
         </section>
 
         <!-- Service Locations Section -->
         <section id="serviceLocations" class="section-editor">
-          <h2>Where we meet</h2>
+          <h2>Service locations</h2>
           <div id="serviceLocations-list" class="items-list"></div>
           <button class="btn btn-secondary" onclick="addItem('serviceLocations')">Add a meeting place</button>
         </section>

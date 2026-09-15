@@ -5,7 +5,7 @@ let editingItem = null;
 let editingSection = null;
 
 const pageSections = {
-  home: ['hero', 'mission', 'greatLove', 'categories', 'clips', 'updates', 'serviceLocations'],
+  home: ['hero', 'mission', 'categories', 'clips', 'greatLove', 'updates', 'serviceLocations'],
   about: ['about'],
   college: ['collegeHero', 'collegeFeatures', 'collegeSchedule'],
   highSchool: ['highSchoolHero', 'highSchoolFeatures', 'highSchoolSchedule'],
