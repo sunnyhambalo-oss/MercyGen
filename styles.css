@@ -965,51 +965,7 @@ label {
   margin: 10px 0 16px;
 }
 
-.zelle-qr-placeholder {
-  width: 180px;
-  height: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: 1px dashed var(--line);
-  border-radius: 16px;
-  background: #f7f7f8;
-  color: var(--muted);
-  font-size: 0.85rem;
-  text-align: center;
-  padding: 10px;
-}
 
-.qr-note {
-  margin-top: 18px;
-}
-
-.paypal-qr-placeholder {
-  width: 180px;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: #fff;
-  padding: 8px;
-}
-
-.paypal-qr-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.zelle-qr-placeholder img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 8px;
-}
 
 .devotion-list {
   display: grid;
