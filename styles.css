@@ -954,7 +954,8 @@ label {
 
 .zelle-email {
   display: inline-block;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
   background: var(--accent-soft);
   color: var(--accent);
   border-radius: 12px;
