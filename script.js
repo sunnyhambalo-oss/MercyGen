@@ -389,6 +389,78 @@ function bindPayPalButtons() {
   }).render('#paypal-button-container');
 }
 
+function bindApplePayButton() {
+  const option = document.getElementById('apple-pay-option');
+  const container = document.getElementById('applepay-button-container');
+  const status = document.getElementById('applepay-status');
+  if (!option || !container || typeof paypal === 'undefined' || !window.ApplePaySession) return;
+  if (!ApplePaySession.canMakePayments() || typeof paypal.Applepay !== 'function') return;
+
+  const getAmount = () => {
+    const custom = document.getElementById('custom-amount');
+    const value = parseFloat(custom && custom.value ? custom.value : '');
+    return Number.isFinite(value) && value >= 5 ? value.toFixed(2) : '50.00';
+  };
+
+  const getPurpose = () => document.getElementById('donation-purpose')?.value || 'General mission';
+  const applepay = paypal.Applepay();
+
+  applepay.config().then((config) => {
+    if (!config.isEligible) return;
+    option.hidden = false;
+    container.innerHTML = '<apple-pay-button id="mercygen-apple-pay" buttonstyle="black" type="donate" locale="en-US"></apple-pay-button>';
+
+    document.getElementById('mercygen-apple-pay').addEventListener('click', () => {
+      const paymentRequest = {
+        countryCode: config.countryCode,
+        merchantCapabilities: config.merchantCapabilities,
+        supportedNetworks: config.supportedNetworks,
+        currencyCode: 'USD',
+        total: { label: 'MercyGen Church', type: 'final', amount: getAmount() }
+      };
+      const session = new ApplePaySession(4, paymentRequest);
+
+      session.onvalidatemerchant = (event) => {
+        applepay.validateMerchant({
+          validationUrl: event.validationURL,
+          displayName: 'MercyGen Church'
+        }).then((result) => session.completeMerchantValidation(result.merchantSession))
+          .catch(() => session.abort());
+      };
+
+      session.onpaymentauthorized = async (event) => {
+        try {
+          const orderResponse = await fetch('/api/paypal/apple-pay/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ amount: getAmount(), purpose: getPurpose() })
+          });
+          const order = await orderResponse.json();
+          if (!orderResponse.ok) throw new Error(order.error || 'Unable to create order');
+
+          const confirmation = await applepay.confirmOrder({
+            orderId: order.id,
+            token: event.payment.token,
+            billingContact: event.payment.billingContact
+          });
+          if (confirmation.status !== 'PAYER_ACTION_REQUIRED') {
+            const captureResponse = await fetch(`/api/paypal/apple-pay/orders/${encodeURIComponent(order.id)}/capture`, { method: 'POST' });
+            if (!captureResponse.ok) throw new Error('Unable to capture payment');
+          }
+          session.completePayment(ApplePaySession.STATUS_SUCCESS);
+          if (status) status.textContent = 'Thank you for your gift!';
+        } catch (error) {
+          console.error('Apple Pay checkout error:', error);
+          session.completePayment(ApplePaySession.STATUS_FAILURE);
+          if (status) status.textContent = 'Something went wrong. Please try again.';
+        }
+      };
+
+      session.begin();
+    });
+  }).catch((error) => console.error('Apple Pay eligibility error:', error));
+}
+
 function bindDevotionForm() {
   const form = document.getElementById('devotion-form');
   if (!form) return;
@@ -428,6 +500,7 @@ function init() {
   bindDonationAmount();
   bindPaymentMethod();
   bindPayPalButtons();
+  bindApplePayButton();
   bindDevotionForm();
 }
 

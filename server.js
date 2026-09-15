@@ -4,10 +4,13 @@ const jwt = require('jsonwebtoken');
 const bcryptjs = require('bcryptjs');
 const fs = require('fs');
 const path = require('path');
+const { execFile } = require('child_process');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
+const PAYPAL_API_BASE = process.env.PAYPAL_API_BASE || 'https://api-m.paypal.com';
 
 // Middleware
 app.use(express.json({ limit: '50mb' }));
@@ -82,6 +85,85 @@ const writeContent = (data) => {
   } catch (err) {
     console.error('Error writing content.json:', err);
     return false;
+  }
+};
+
+const getPayPalAccessToken = async () => {
+  const clientId = process.env.PAYPAL_CLIENT_ID;
+  const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
+
+  if (!clientId || !clientSecret) {
+    throw new Error('PayPal API credentials are not configured');
+  }
+
+  const credentials = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+  const response = await fetch(`${PAYPAL_API_BASE}/v1/oauth2/token`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${credentials}`,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: 'grant_type=client_credentials'
+  });
+
+  if (!response.ok) {
+    throw new Error(`PayPal authentication failed (${response.status})`);
+  }
+
+  const data = await response.json();
+  return data.access_token;
+};
+
+const getDonationAmount = (value) => {
+  const amount = Number(value);
+  if (!Number.isFinite(amount) || amount < 5 || amount > 100000) {
+    throw new Error('Donation amount must be between $5 and $100,000');
+  }
+  return amount.toFixed(2);
+};
+
+const syncContentToGitHub = async () => {
+  const enabled = String(process.env.ENABLE_GIT_SYNC || '').toLowerCase() === 'true';
+  const repo = process.env.GITHUB_REPO || '';
+  const token = process.env.GITHUB_TOKEN || '';
+  const branch = process.env.GITHUB_BRANCH || 'main';
+
+  if (!enabled || !repo || !token) {
+    return;
+  }
+
+  if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repo)) {
+    console.error('GitHub sync skipped: invalid GITHUB_REPO format. Use owner/repo.');
+    return;
+  }
+
+  const repoUrl = `https://x-access-token:${token}@github.com/${repo}.git`;
+  const runGit = (args) => new Promise((resolve, reject) => {
+    execFile('git', args, { cwd: __dirname }, (error, stdout, stderr) => {
+      if (error) {
+        reject(new Error(stderr || error.message));
+        return;
+      }
+      resolve((stdout || '').trim());
+    });
+  });
+
+  try {
+    const status = await runGit(['status', '--porcelain']);
+    if (!status) {
+      return;
+    }
+
+    await runGit(['remote', 'set-url', 'origin', repoUrl]).catch(async () => {
+      await runGit(['remote', 'add', 'origin', repoUrl]);
+    });
+
+    await runGit(['add', 'data/content.json']);
+    await runGit(['commit', '-m', 'Auto-save admin content']);
+    await runGit(['push', 'origin', branch]);
+    console.log('GitHub sync completed successfully.');
+  } catch (err) {
+    console.error('GitHub sync failed:', err.message);
   }
 };
 
@@ -171,6 +253,64 @@ app.post('/api/admin/logout', (req, res) => {
   res.json({ message: 'Logout successful' });
 });
 
+// ==================== PayPal Apple Pay Routes ====================
+
+app.post('/api/paypal/apple-pay/orders', async (req, res) => {
+  try {
+    const accessToken = await getPayPalAccessToken();
+    const amount = getDonationAmount(req.body.amount);
+    const purpose = String(req.body.purpose || 'General mission').slice(0, 127);
+    const response = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        'PayPal-Request-Id': `mercygen-${Date.now()}-${Math.random().toString(36).slice(2)}`
+      },
+      body: JSON.stringify({
+        intent: 'CAPTURE',
+        purchase_units: [{
+          description: purpose,
+          amount: { currency_code: 'USD', value: amount }
+        }]
+      })
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      return res.status(response.status).json({ error: data.message || 'PayPal order creation failed' });
+    }
+
+    res.json({ id: data.id });
+  } catch (err) {
+    console.error('Apple Pay order error:', err);
+    res.status(400).json({ error: err.message || 'Unable to create PayPal order' });
+  }
+});
+
+app.post('/api/paypal/apple-pay/orders/:orderId/capture', async (req, res) => {
+  try {
+    const accessToken = await getPayPalAccessToken();
+    const response = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders/${encodeURIComponent(req.params.orderId)}/capture`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      return res.status(response.status).json({ error: data.message || 'PayPal capture failed' });
+    }
+
+    res.json({ status: data.status, id: data.id });
+  } catch (err) {
+    console.error('Apple Pay capture error:', err);
+    res.status(400).json({ error: err.message || 'Unable to capture PayPal order' });
+  }
+});
+
 // ==================== Content Routes ====================
 
 // Get all content
@@ -204,6 +344,9 @@ app.put('/api/content/:section', authenticateToken, (req, res) => {
     content[sectionName] = req.body;
 
     if (writeContent(content)) {
+      if (process.env.ENABLE_GIT_SYNC === 'true') {
+        syncContentToGitHub();
+      }
       res.json({ message: 'Section updated successfully', data: content[sectionName] });
     } else {
       res.status(500).json({ error: 'Failed to save content' });
@@ -367,11 +510,12 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
   console.log(`\n========================================`);
   console.log(`MercyGen Admin CMS Server`);
   console.log(`========================================`);
   console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`LAN access: http://${HOST === '0.0.0.0' ? 'YOUR_LOCAL_IP' : HOST}:${PORT}`);
   console.log(`Admin dashboard: http://localhost:${PORT}/admin`);
   console.log(`Default password: admin123`);
   console.log(`========================================\n`);

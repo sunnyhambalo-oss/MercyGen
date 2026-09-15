@@ -1007,6 +1007,21 @@ label {
   border-radius: 8px;
 }
 
+.apple-pay-option {
+  margin: 16px 0;
+}
+
+#applepay-button-container {
+  max-width: 320px;
+}
+
+apple-pay-button {
+  --apple-pay-button-width: 100%;
+  --apple-pay-button-height: 44px;
+  --apple-pay-button-border-radius: 8px;
+  --apple-pay-button-box-sizing: border-box;
+}
+
 .devotion-list {
   display: grid;
   gap: 16px;

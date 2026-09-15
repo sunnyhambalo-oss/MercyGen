@@ -11,7 +11,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAr76ALGTcR5ihwcC48d17k7wBW-AOjYw7EJEknLFB8Si8WoIDJPN_Revg2VQazkXuWfBeq7N8ipRQozo&components=buttons&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAr76ALGTcR5ihwcC48d17k7wBW-AOjYw7EJEknLFB8Si8WoIDJPN_Revg2VQazkXuWfBeq7N8ipRQozo&components=buttons,applepay&currency=USD"></script>
+    <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
     <script src="script.js" defer></script>
   </head>
   <body data-page="donate">
@@ -100,6 +101,11 @@
                 <h3>Complete your gift with PayPal</h3>
                 <p class="verse-note">Use PayPal or a debit or credit card to give securely.</p>
                 <div id="paypal-button-container"></div>
+                <div class="apple-pay-option" id="apple-pay-option" hidden>
+                  <p class="verse-note">Pay securely with Apple Pay.</p>
+                  <div id="applepay-button-container"></div>
+                  <p class="give-status" id="applepay-status" role="status"></p>
+                </div>
                 <div class="paypal-qr-placeholder">
                   <img src="Images/Donate to Merc-qrcode.png" alt="PayPal QR code for MercyGen Church" />
                 </div>
