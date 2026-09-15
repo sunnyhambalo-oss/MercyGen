@@ -65,6 +65,20 @@
           <button class="btn btn-primary" onclick="saveSection('hero')">Save this part</button>
         </section>
 
+        <section id="banner" class="section-editor">
+          <h2>Home banner</h2>
+          <div class="form-group">
+            <label>Banner image</label>
+            <input type="text" id="banner-image-input" class="form-input">
+            <div class="file-input-group media-dropzone" id="banner-image-dropzone" role="button" tabindex="0">
+              <p>Click here or drag a banner image here</p>
+              <input type="file" id="banner-image-upload" accept="image/*">
+            </div>
+            <img id="banner-image-preview" class="media-preview" alt="Home banner preview" style="display:none;">
+          </div>
+          <button class="btn btn-primary" onclick="saveSection('banner')">Save this part</button>
+        </section>
+
         <section id="mission" class="section-editor">
           <h2>What we are about</h2>
           <div class="form-group">

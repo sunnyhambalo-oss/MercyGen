@@ -88,6 +88,12 @@ function renderHomeContent() {
     }).join('');
   }
 
+  const bannerImg = document.getElementById('home-banner-image');
+  if (bannerImg) {
+    bannerImg.src = appContent.banner?.image || 'banner/IMG_0382 2.jpeg';
+    bannerImg.alt = appContent.banner?.alt || 'MercyGenerations Church congregation gathered together';
+  }
+
   const mission = appContent.mission;
   if (mission) {
     document.getElementById('mission-eyebrow').textContent = mission.eyebrow || '';
@@ -100,10 +106,12 @@ function renderHomeContent() {
     document.getElementById('great-love-eyebrow').textContent = greatLove.eyebrow || '';
     document.getElementById('great-love-title').textContent = greatLove.title || '';
     document.getElementById('great-love-description').textContent = greatLove.description || '';
-    const video = document.getElementById('great-love-video');
-    video.setAttribute('poster', greatLove.image || '');
-    video.innerHTML = `<source src="${escapeHtml(greatLove.video)}" type="${greatLove.video && greatLove.video.toLowerCase().endsWith('.mov') ? 'video/quicktime' : 'video/mp4'}">`;
-    video.load();
+
+    const mediaImage = document.getElementById('great-love-media');
+    if (mediaImage) {
+      mediaImage.src = greatLove.image || 'Images/WhatsApp Image 2026-08-13 at 08.56.14.jpeg';
+      mediaImage.alt = greatLove.title || 'Our Great Love';
+    }
   }
 
   if (Array.isArray(appContent.categories)) {

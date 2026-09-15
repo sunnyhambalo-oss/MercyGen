@@ -11,6 +11,10 @@
       }
     ]
   },
+  "banner": {
+    "image": "banner/IMG_0382 2.jpeg",
+    "alt": "MercyGenerations Church congregation gathered together"
+  },
   "mission": {
     "eyebrow": "Our mission",
     "title": "To win the lost, To make disciples, To raise a new generation of leaders",
@@ -102,33 +106,33 @@
     "eyebrow": "Our Great Love",
     "title": "Our Great Love",
     "description": "A glimpse into the love that drives everything we do at MercyGen.",
-    "image": "Images/WhatsApp Image 2026-08-13 at 08.56.14.jpeg",
-    "video": "Videos/Automatic.mov"
+    "video": "",
+    "image": "/uploads/image-1789497233670-76068163.jpeg"
   },
   "updates": [
     {
       "id": 1,
-      "date": "12",
-      "month": "Aug",
-      "tag": "Prayer night",
-      "title": "Night of worship and prayer",
-      "description": "Join us for a focused evening of worship, scripture, and prayer for revival."
+      "date": 20,
+      "month": "Sep",
+      "tag": "Sundays",
+      "title": "Sunday Worship Service",
+      "description": "Regular Worship Service - 09hrs @ Lifesong Harmony School, Chipata compound, Kitwe."
     },
     {
       "id": 2,
-      "date": "20",
-      "month": "Aug",
-      "tag": "Community outreach",
-      "title": "Serve the city",
-      "description": "We will distribute food, encouragement, and prayer materials across the community."
+      "date": 19,
+      "month": "Sep",
+      "tag": "Youth",
+      "title": "NewGen High School Service ",
+      "description": "High School Worship Service - 09hrs @ Lifesong Harmony School, Chipata compound, Kitwe."
     },
     {
       "id": 3,
-      "date": "26",
-      "month": "Aug",
-      "tag": "Youth summit",
-      "title": "Rise with purpose",
-      "description": "A high-energy gathering where young people hear the Word and move in bold faith."
+      "date": 17,
+      "month": "Sep",
+      "tag": "College",
+      "title": "CBU College Service",
+      "description": "CBU College Worship Service - 18:30hrs @ CBU Chapel, Kitwe"
     }
   ],
   "serviceLocations": [

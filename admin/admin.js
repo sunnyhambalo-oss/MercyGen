@@ -5,7 +5,7 @@ let editingItem = null;
 let editingSection = null;
 
 const pageSections = {
-  home: ['hero', 'mission', 'categories', 'clips', 'greatLove', 'updates', 'serviceLocations'],
+  home: ['hero', 'banner', 'mission', 'categories', 'clips', 'greatLove', 'updates', 'serviceLocations'],
   about: ['about'],
   college: ['collegeHero', 'collegeFeatures', 'collegeSchedule'],
   highSchool: ['highSchoolHero', 'highSchoolFeatures', 'highSchoolSchedule'],
@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('logout-btn').addEventListener('click', handleLogout);
   setupGreatLoveUploads();
   setupAboutUpload();
+  setupBannerUpload();
 
   // Navigation
   document.querySelectorAll('.page-nav-btn').forEach(btn => {
@@ -139,6 +140,9 @@ function loadSectionForm(sectionName) {
     document.getElementById('hero-cta-1-link').value = section.cta?.[0]?.link || '';
     document.getElementById('hero-cta-2-text').value = section.cta?.[1]?.text || '';
     document.getElementById('hero-cta-2-link').value = section.cta?.[1]?.link || '';
+  } else if (sectionName === 'banner') {
+    document.getElementById('banner-image-input').value = section.image || '';
+    updateBannerPreview(section.image || '');
   } else if (sectionName === 'mission') {
     document.getElementById('mission-eyebrow').value = section.eyebrow || '';
     document.getElementById('mission-title').value = section.title || '';
@@ -170,6 +174,60 @@ function loadSectionForm(sectionName) {
     document.getElementById('cellgroupGather-title-input').value = section.title || '';
     document.getElementById('cellgroupGather-description-input').value = section.description || '';
   }
+}
+
+function setupBannerUpload() {
+  const dropzone = document.getElementById('banner-image-dropzone');
+  const input = document.getElementById('banner-image-upload');
+  if (!dropzone || !input) return;
+
+  dropzone.addEventListener('click', () => input.click());
+  input.addEventListener('click', event => event.stopPropagation());
+  dropzone.addEventListener('dragover', event => {
+    event.preventDefault();
+    dropzone.classList.add('is-dragging');
+  });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('is-dragging'));
+  dropzone.addEventListener('drop', event => {
+    event.preventDefault();
+    dropzone.classList.remove('is-dragging');
+    uploadBannerImage(event.dataTransfer.files[0]);
+  });
+  input.addEventListener('change', () => {
+    uploadBannerImage(input.files[0]);
+    input.value = '';
+  });
+}
+
+async function uploadBannerImage(file) {
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    showNotification('Please choose a picture file for the banner.', 'error');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('image', file);
+
+  try {
+    const response = await fetch(`${API_BASE}/api/upload`, { method: 'POST', body: formData });
+    if (redirectIfUnauthorized(response)) return;
+    if (!response.ok) throw new Error('The banner image could not be uploaded.');
+
+    const data = await response.json();
+    document.getElementById('banner-image-input').value = data.path;
+    updateBannerPreview(data.path);
+    showNotification('Banner image uploaded!', 'success');
+  } catch (err) {
+    showNotification(err.message, 'error');
+  }
+}
+
+function updateBannerPreview(path) {
+  const preview = document.getElementById('banner-image-preview');
+  if (!preview) return;
+  preview.src = path || '';
+  preview.style.display = path ? 'block' : 'none';
 }
 
 function setupAboutUpload() {
@@ -325,6 +383,10 @@ async function saveSection(sectionName) {
             type: 'secondary'
           }
         ]
+      };
+    } else if (sectionName === 'banner') {
+      data = {
+        image: document.getElementById('banner-image-input').value
       };
     } else if (sectionName === 'mission') {
       data = {
